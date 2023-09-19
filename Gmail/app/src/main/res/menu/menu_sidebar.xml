@@ -6,35 +6,45 @@
             android:title="Inbox"
             android:icon="@drawable/inbox"/>
     </group>
-        <item>
+        <item android:title="LABLES">
+
             <menu>
                 <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/star"
                     android:title="Starred"
-                    android:icon="@drawable/starred"/>
+                    android:icon="@drawable/stargg"/>
                 <item
                     android:id="@+id/sent"
                     android:title="Sent"
-                    android:icon="@drawable/send"/>
+                    android:icon="@drawable/sendgg"/>
                 <item
                     android:id="@+id/allmail"
                     android:title="All mail"
-                    android:icon="@drawable/allmail"/>
+                    android:icon="@drawable/allmailgg" />
+                <item
+                    android:id="@+id/spam"
+                    android:title="Spam"
+                    android:icon="@drawable/spamgg"/>
+                <item
+                    android:id="@+id/trash"
+                    android:title="Trash"
+                    android:icon="@drawable/trashgg" />
                 </group>
             </menu>
         </item>
-        <item>
+        <item android:title="SETTINGS">
             <menu>
                 <group android:checkableBehavior="single">
         <item
-            android:id="@+id/spam"
-            android:title="Spam"
-            android:icon="@drawable/spam"/>
-        <item
-            android:id="@+id/trash"
+            android:id="@+id/settings"
             android:title="Trash"
-            android:icon="@drawable/trash"/>
+            android:icon="@drawable/settingsgg" />
+        <item
+            android:id="@+id/logout"
+            android:title="Log out"
+            android:icon="@drawable/logoutgg"/>
+
                 </group>
             </menu>
         </item>
