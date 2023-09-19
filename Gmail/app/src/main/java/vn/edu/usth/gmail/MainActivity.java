@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
     NavigationView navigationView;
     Toolbar toolbar;
 
+    Button compose_button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
+        compose_button = findViewById(R.id.Compose);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -54,6 +57,15 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
                 } else {
                     drawerLayout.openDrawer(GravityCompat.START);
                 }
+            }
+        });
+
+        compose_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -119,6 +131,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
         intent.putExtra("Image", userList.get(position).getImage());
         startActivity(intent);
     }
+
+
 
 
     @Override

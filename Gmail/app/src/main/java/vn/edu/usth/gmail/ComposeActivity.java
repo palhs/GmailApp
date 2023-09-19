@@ -1,0 +1,71 @@
+package vn.edu.usth.gmail;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class ComposeActivity extends AppCompatActivity {
+
+    private EditText mEditTextTo;
+    private EditText mEditTextSubject;
+    private EditText mEditTextMessage;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_compose);
+
+        ImageButton backIcon = findViewById(R.id.back_icon);
+        ImageView horizIcon = findViewById(R.id.horiz_icon);
+        ImageView sendIcon = findViewById(R.id.send_icon);
+        ImageView linkIcon = findViewById(R.id.link_icon);
+        TextView title = findViewById(R.id.toolbar_title);
+
+
+        backIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        horizIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ComposeActivity.this, "You click on horiz icon", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        sendIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ComposeActivity.this, "You click on send icon", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        linkIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ComposeActivity.this, "You click on link icon", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        mEditTextTo = findViewById(R.id.edit_text_to);
+        mEditTextSubject = findViewById(R.id.edit_text_subject);
+        mEditTextMessage = findViewById(R.id.edit_text_message);
+
+
+
+    }
+
+
+}
