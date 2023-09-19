@@ -61,10 +61,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
     }
 
     // Inside your MainActivity.java
-    public void openSecondActivity() {
-        Intent intent = new Intent(this, SecondActivity.class);
-        startActivity(intent);
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -82,13 +79,13 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
 
     private void displayItems() {
         recyclerView = findViewById(R.id.recycler_main);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         userList = new ArrayList<>();
 
         userList.add(new User("Phan Anh", "Helloooo", "XIn Chao", R.drawable.a));
-        userList.add(new User("Minh Duc", "Helloooo", "XIn Chao", R.drawable.b));
-        userList.add(new User("Trong Duc", "Helloooo", "XIn Chao", R.drawable.c));
-        userList.add(new User("Bui Duc", "Helloooo", "XIn Chao", R.drawable.e));
+        userList.add(new User("Trong Duc", "fwefwefwef", "hrethrth", R.drawable.c));
+        userList.add(new User("Bui Duc", "herthert", "hretherh", R.drawable.e));
         userList.add(new User("Hoang Nam", "Helloooo", "XIn Chao", R.drawable.f));
         userList.add(new User("Phan Anh", "Helloooo", "XIn Chao", R.drawable.a));
         userList.add(new User("Minh Duc", "Helloooo", "XIn Chao", R.drawable.b));
@@ -105,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
         userList.add(new User("Trong Duc", "Helloooo", "XIn Chao", R.drawable.c));
         userList.add(new User("Bui Duc", "Helloooo", "XIn Chao", R.drawable.e));
         userList.add(new User("Hoang Nam", "Helloooo", "XIn Chao", R.drawable.f));
+
 
 
         customAdapter = new CustomAdapter(this, userList, this);
@@ -113,15 +111,14 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
     }
 
     @Override
-    public void onItemClicked(User myModel) {
-        Toast.makeText(this, myModel.getName(), Toast.LENGTH_SHORT).show();
+    public void onItemClicked(int position) {
+        Intent intent = new Intent(MainActivity.this, Detail_1.class);
+        intent.putExtra("Name", userList.get(position).getName());
+        intent.putExtra("Head Mail", userList.get(position).getHead_mail());
+        intent.putExtra("Content", userList.get(position).getContent());
+        intent.putExtra("Image", userList.get(position).getImage());
+        startActivity(intent);
     }
-
-
-
-
-
-
 
 
     @Override
