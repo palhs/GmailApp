@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
+
 
 public class ComposeActivity extends AppCompatActivity {
 
@@ -33,7 +35,12 @@ public class ComposeActivity extends AppCompatActivity {
         backIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                // Create an Intent to navigate to the previous activity or fragment
+                Intent intent = new Intent(ComposeActivity.this, MainActivity.class);
+                startActivity(intent);
+
+                // Optionally, finish the current activity to remove it from the stack
+                finish();
             }
         });
 
