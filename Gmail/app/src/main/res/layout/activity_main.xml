@@ -10,12 +10,12 @@
     tools:openDrawer="start">
 
     <!-- NavigationView -->
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="left"
-        app:menu="@menu/menu_sidebar" />
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:id="@+id/nav_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="start"-->
+<!--        app:menu="@menu/menu_sidebar" />-->
 
     <!-- CoordinatorLayout -->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -30,20 +30,20 @@
             app:elevation="0dp">
 
             <!-- ConstraintLayout with CardView and Toolbar -->
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#FFFFFF">
 
                 <!-- CardView -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:cardBackgroundColor="#e6e7f0"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="2dp"
-                    app:cardUseCompatPadding="true">
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/cardView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    app:cardBackgroundColor="#e6e7f0"-->
+<!--                    app:cardCornerRadius="8dp"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:cardUseCompatPadding="true">-->
 
                     <!-- Toolbar -->
                     <androidx.appcompat.widget.Toolbar
@@ -68,8 +68,8 @@
                             android:textColor="#5f6369" />
 
                     </androidx.appcompat.widget.Toolbar>
-                </androidx.cardview.widget.CardView>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+<!--                </androidx.cardview.widget.CardView>-->
+            </FrameLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
         <!-- RecyclerView for Inbox Items -->
@@ -97,5 +97,12 @@
             android:layout_gravity="bottom|end" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/menu_sidebar" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

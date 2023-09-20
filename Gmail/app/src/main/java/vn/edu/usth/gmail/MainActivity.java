@@ -1,8 +1,10 @@
 package vn.edu.usth.gmail;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -28,7 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements SelectListener {
+public class MainActivity extends AppCompatActivity implements SelectListener{
 
     RecyclerView recyclerView;
     List<User> userList;
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +75,19 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
             }
         });
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.logout) {
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
 
     }
 
@@ -167,6 +183,9 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
             super.onDestroy();
             Log.i("MainActivity", "OnDestroy");
         }
-    }
+
+
+
+}
 
 
