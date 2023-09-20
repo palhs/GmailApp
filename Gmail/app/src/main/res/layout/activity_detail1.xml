@@ -1,121 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Detail_1"
-    android:layout_margin="10dp">
-
-    <LinearLayout
+    tools:context=".MainActivity">
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:id="@+id/D_head_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Head Mail"/>
-            <Button
-                android:id="@+id/inbox"
-                android:layout_width="70dp"
-                android:layout_height="80dp"
-                android:layout_toEndOf="@+id/D_head_email"
-                android:text="Button"
-                />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="295dp"
-                android:layout_toEndOf="@id/inbox"
-                android:src="@drawable/ic_star1"
-                android:background="@drawable/transparent"
-                />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/D_imageview"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="-10dp"
-                android:src="@drawable/ic_launcher_background" />
-
-            <TextView
-                android:id="@+id/D_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="-5dp"
-                android:layout_toEndOf="@id/D_imageview"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:layout_marginTop="5dp"
-                android:text="Name"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="38dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="217dp"
-                android:layout_marginRight="3dp"
-                android:layout_toEndOf="@+id/D_name"
-                android:text="Sep 19" />
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="59dp"
-                app:srcCompat="@drawable/reply" />
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:background="@color/white" />
 
 
-        </RelativeLayout>
+    <TextView
+        android:id="@+id/D_head_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HELLOOOO"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="33dp"
+        android:textSize="22dp"/>
 
-        <TextView
-            android:id="@+id/D_content"
-            android:layout_width="match_parent"
-            android:layout_height="614dp"
-            android:layout_marginLeft="-5dp"
-            android:fontFamily="roboto_light.ttf"
-            android:text="Content"
-            android:textColor="@color/black" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="380dp"
+        android:src="@drawable/star" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp">
+    <TextView
+        android:id="@+id/D_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xin chao toi la Nam. "
+        android:layout_marginTop="240dp"
+        android:layout_marginLeft="33dp"
+        android:textSize="16dp"/>
 
-            <Button
-                android:layout_width="240dp"
-                android:layout_height="30dp"
-                android:id="@+id/reply"
-                android:layout_marginRight="5dp"/>
-            <Button
-                android:layout_width="240dp"
-                android:layout_height="30dp"
-                android:layout_toEndOf="@+id/reply"
-                android:layout_marginLeft="5dp"/>
+    <include layout="@layout/detail_1_text" />
 
-        </RelativeLayout>
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/detail_1_button" />
+
+
+</RelativeLayout>
+
+
+
+
