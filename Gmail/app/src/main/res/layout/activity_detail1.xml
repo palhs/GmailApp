@@ -12,6 +12,7 @@
         android:background="@color/white" />
 
 
+
     <TextView
         android:id="@+id/D_head_email"
         android:layout_width="wrap_content"
