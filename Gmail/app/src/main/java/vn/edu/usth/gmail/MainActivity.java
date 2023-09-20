@@ -2,6 +2,8 @@ package vn.edu.usth.gmail;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +24,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
     NavigationView navigationView;
     Toolbar toolbar;
 
+    Button compose_button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
+        compose_button = findViewById(R.id.Compose);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -54,6 +60,15 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
                 } else {
                     drawerLayout.openDrawer(GravityCompat.START);
                 }
+            }
+        });
+
+        compose_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -119,6 +134,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener {
         intent.putExtra("Image", userList.get(position).getImage());
         startActivity(intent);
     }
+
+
 
 
     @Override
