@@ -5,6 +5,7 @@
             android:id="@+id/inbox"
             android:title="Inbox"
             android:icon="@drawable/inbox"
+
             android:visible="true"/>
     </group>
         <item android:title="LABLES">
@@ -14,7 +15,8 @@
                 <item
                     android:id="@+id/star"
                     android:title="Starred"
-                    android:icon="@drawable/stargg"/>
+                    android:icon="@drawable/stargg"
+                    />
                 <item
                     android:id="@+id/sent"
                     android:title="Sent"

@@ -39,6 +39,7 @@
             android:layout_centerVertical="true"
             android:id="@+id/horiz_icon"
             android:background="#FEFBFE"
+
             />
 
         <ImageButton

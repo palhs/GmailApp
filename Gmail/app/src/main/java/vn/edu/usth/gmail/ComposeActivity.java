@@ -32,6 +32,7 @@ public class ComposeActivity extends AppCompatActivity {
         TextView title = findViewById(R.id.toolbar_title);
 
 
+
         backIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +74,7 @@ public class ComposeActivity extends AppCompatActivity {
 
 
     }
+
 
 
 }
