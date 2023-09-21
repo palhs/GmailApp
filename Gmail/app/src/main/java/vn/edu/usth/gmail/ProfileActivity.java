@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class SettingsActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
 
     BottomNavigationView bottomNavigationView;
@@ -22,6 +22,8 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.profile);
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -36,7 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
                     finish();
                     return true;
                 } else if (itemId == R.id.settings) {
-                    startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     finish();
                     return true;
                 }

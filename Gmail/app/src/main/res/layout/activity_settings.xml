@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".SettingsActivity"
+    tools:context=".ProfileActivity"
     tools:openDrawer="start">
 
 
@@ -68,12 +68,12 @@
 
         <!-- RecyclerView for Inbox Items -->
 
-        <!-- Floating Action Button -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+<!--        &lt;!&ndash; Floating Action Button &ndash;&gt;-->
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recycler_main"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:layout_width="match_parent"

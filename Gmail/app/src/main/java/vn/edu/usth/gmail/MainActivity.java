@@ -4,10 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
@@ -31,6 +32,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+
+import vn.edu.usth.gmail.fragment.TrashFragment;
 
 public class MainActivity extends AppCompatActivity implements SelectListener,KeyboardVisibilityUtils.OnKeyboardVisibilityListener{
 
@@ -103,9 +106,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                     return true;
                 }
                 else if (item.getItemId() == R.id.star){
-                    Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
-                    startActivity(intent);
-                    finish();
+                    openFragment(new TrashFragment());
                     return true;
                 }
                 else if (item.getItemId() == R.id.settings){
@@ -155,8 +156,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                     startActivity(new Intent(getApplicationContext(), ChatActivity.class));
                     finish();
                     return true;
-                } else if (itemId == R.id.settings) {
-                    startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                } else if (itemId == R.id.profile) {
+                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     finish();
                     return true;
                 }
@@ -235,7 +236,11 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         startActivity(intent);
     }
 
-
+    private void openFragment(Fragment fragment){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.commit();
+    }
 
 
     @Override

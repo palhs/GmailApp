@@ -18,9 +18,8 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-
-
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.chat);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -36,7 +35,7 @@ public class ChatActivity extends AppCompatActivity {
                     finish();
                     return true;
                 } else if (itemId == R.id.settings) {
-                    startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     finish();
                     return true;
                 }

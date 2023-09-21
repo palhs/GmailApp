@@ -69,11 +69,11 @@
         <!-- RecyclerView for Inbox Items -->
 
         <!-- Floating Action Button -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recycler_main"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:layout_width="match_parent"

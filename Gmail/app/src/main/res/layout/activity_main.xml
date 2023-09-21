@@ -17,6 +17,15 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            android:layout_above="@id/bottomAppBar"
+            android:background="#FFFFFF"/>
+
         <!-- AppBarLayout with Toolbar -->
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -24,10 +33,11 @@
             app:elevation="0dp">
 
             <!-- ConstraintLayout with CardView and Toolbar -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#FFFFFF">
+<!--            <FrameLayout-->
+<!--                android:id="@+id/fragment_container"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="#FFFFFF">-->
 
                 <!-- CardView -->
                 <androidx.cardview.widget.CardView
@@ -63,7 +73,7 @@
 
                     </androidx.appcompat.widget.Toolbar>
                 </androidx.cardview.widget.CardView>
-            </FrameLayout>
+<!--            </FrameLayout>-->
         </com.google.android.material.appbar.AppBarLayout>
 
         <!-- RecyclerView for Inbox Items -->
@@ -91,6 +101,15 @@
                 app:menu="@menu/bottom_navigation_menu"
                 android:background="@android:color/transparent"/>
         </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+<!--        <FrameLayout-->
+<!--            android:id="@+id/fragment_container"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_below="@id/toolbar"-->
+<!--            android:layout_above="@id/bottomAppBar"-->
+<!--            android:background="#FFFFFF"/>-->
 
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
