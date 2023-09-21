@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity"
+    tools:context=".ChatActivity"
     tools:openDrawer="start">
 
 
@@ -55,7 +55,7 @@
                             android:layout_width="310dp"
                             android:layout_height="48dp"
                             android:fontFamily="@font/light"
-                            android:hint="Search in mail"
+                            android:hint="@string/search_in_mail"
                             android:layout_marginStart="20dp"
                             android:inputType="text"
                             android:paddingStart="15dp"

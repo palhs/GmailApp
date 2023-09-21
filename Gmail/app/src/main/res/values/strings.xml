@@ -11,6 +11,7 @@
     <string name="click_to_register">Click to register</string>
     <string name="logout">Logout</string>
     <string name="usth_mail">USTH Mail</string>
+    <string name="search_in_mail">Search in mail</string>
 
 
 </resources>

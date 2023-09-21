@@ -4,33 +4,35 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
+
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-import android.widget.EditText;
+
 import androidx.core.view.GravityCompat;
-import android.widget.Toast;
+
 import android.view.MenuItem;
 import java.util.List;
 import android.content.Intent;
 import androidx.appcompat.widget.Toolbar;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements SelectListener{
+public class MainActivity extends AppCompatActivity implements SelectListener,KeyboardVisibilityUtils.OnKeyboardVisibilityListener{
 
     RecyclerView recyclerView;
     List<User> userList;
@@ -42,6 +44,13 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
 
     Button compose_button;
 
+    CoordinatorLayout coordinatorLayout;
+    BottomAppBar bottomAppBar;
+
+    BottomNavigationView bottomNavigationView;
+    ExtendedFloatingActionButton extendedFloatingActionButton;
+    KeyboardVisibilityUtils keyboardVisibilityUtils;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +60,17 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
         compose_button = findViewById(R.id.Compose);
+        coordinatorLayout = findViewById(R.id.coordinator_layout);
+        bottomAppBar = findViewById(R.id.bottomAppBar);
+        extendedFloatingActionButton = findViewById(R.id.Compose);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        View rootView = findViewById(android.R.id.content);
+        keyboardVisibilityUtils = new KeyboardVisibilityUtils(rootView, this);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +102,35 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
                     finish();
                     return true;
                 }
+                else if (item.getItemId() == R.id.star){
+                    Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+
+                if (itemId == R.id.home) {
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
+                    return true;
+                } else if (itemId == R.id.chat) {
+                    startActivity(new Intent(getApplicationContext(), ChatActivity.class));
+                    finish();
+                    return true;
+                } else if (itemId == R.id.settings) {
+                    startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                    finish();
+                    return true;
+                }
+
                 return false;
             }
         });
@@ -93,20 +139,28 @@ public class MainActivity extends AppCompatActivity implements SelectListener{
 
     // Inside your MainActivity.java
 
+//
+
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                drawerLayout.closeDrawer(GravityCompat.START);
-            } else {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-            return true;
+    public void onKeyboardVisibilityChanged(boolean isVisible) {
+        if (isVisible) {
+            // Keyboard is open, hide the BottomAppBar and FAB
+            bottomAppBar.setVisibility(View.GONE);
+            extendedFloatingActionButton.setVisibility(View.GONE);
+        } else {
+            // Keyboard is closed, show the BottomAppBar and FAB
+            bottomAppBar.setVisibility(View.VISIBLE);
+            extendedFloatingActionButton.setVisibility(View.VISIBLE);
         }
-        return super.onOptionsItemSelected(item);
     }
-
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen((GravityCompat.START))){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }else{
+        super.onBackPressed();
+    }}
 
     private void displayItems() {
         recyclerView = findViewById(R.id.recycler_main);
