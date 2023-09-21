@@ -44,7 +44,7 @@
                     android:id="@+id/cardView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:cardBackgroundColor="#e6e7f0"
+                    app:cardBackgroundColor="#FFFFFF"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="2dp"
                     app:cardUseCompatPadding="true">
