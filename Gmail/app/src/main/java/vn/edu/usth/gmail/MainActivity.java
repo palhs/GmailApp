@@ -108,6 +108,36 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                     finish();
                     return true;
                 }
+                else if (item.getItemId() == R.id.settings){
+                    Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if (item.getItemId() == R.id.sent){
+                    Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if (item.getItemId() == R.id.allmail){
+                    Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if (item.getItemId() == R.id.spam){
+                    Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
+                else if (item.getItemId() == R.id.trash){
+                    Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
+                }
                 return false;
             }
         });
