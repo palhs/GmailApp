@@ -199,25 +199,24 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         userList = new ArrayList<>();
 
-        userList.add(new User("Phan Anh", "Helloooo", "XIn Chao", R.drawable.a));
-        userList.add(new User("Trong Duc", "fwefwefwef", "hrethrth", R.drawable.c));
-        userList.add(new User("Bui Duc", "herthert", "hretherh", R.drawable.e));
-        userList.add(new User("Hoang Nam", "Helloooo", "XIn Chao", R.drawable.f));
-        userList.add(new User("Phan Anh", "Helloooo", "XIn Chao", R.drawable.a));
-        userList.add(new User("Minh Duc", "Helloooo", "XIn Chao", R.drawable.b));
-        userList.add(new User("Trong Duc", "Helloooo", "XIn Chao", R.drawable.c));
-        userList.add(new User("Bui Duc", "Helloooo", "XIn Chao", R.drawable.e));
-        userList.add(new User("Hoang Nam", "Helloooo", "XIn Chao", R.drawable.f));
-        userList.add(new User("Phan Anh", "Helloooo", "XIn Chao", R.drawable.a));
-        userList.add(new User("Minh Duc", "Helloooo", "XIn Chao", R.drawable.b));
-        userList.add(new User("Trong Duc", "Helloooo", "XIn Chao", R.drawable.c));
-        userList.add(new User("Bui Duc", "Helloooo", "XIn Chao", R.drawable.e));
-        userList.add(new User("Hoang Nam", "Helloooo", "XIn Chao", R.drawable.f));
-        userList.add(new User("Phan Anh", "Helloooo", "XIn Chao", R.drawable.a));
-        userList.add(new User("Minh Duc", "Helloooo", "XIn Chao", R.drawable.b));
-        userList.add(new User("Trong Duc", "Helloooo", "XIn Chao", R.drawable.c));
-        userList.add(new User("Bui Duc", "Helloooo", "XIn Chao", R.drawable.e));
-        userList.add(new User("Hoang Nam", "Helloooo", "XIn Chao", R.drawable.f));
+        userList.add(new User("USTH Student Services", "Đăng kí gian hàng hội chợ", "Thân gửi em, để chào mừng tân sinh viên ", R.drawable.a));
+        userList.add(new User("GED Dept", "CHECK ATTENDANCE LIST", "Find your name in the Excel file below", R.drawable.f));
+        userList.add(new User("Phan Anh", "INTERNSHIP", "Urgent", R.drawable.a));
+        userList.add(new User("Hoang Thi Van Anh", "Machine Learning Checklist Attendance", "Dear all, the ICT Department",R.drawable.a));
+        userList.add(new User("Bui Duc", "GPA", "How about you?", R.drawable.e));
+        userList.add(new User("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e));
+        userList.add(new User("Trinh Thi Thu Trang", "Đăng kí môn lựa chọn", "Dear students", R.drawable.f));
+        userList.add(new User("Trong Duc", "Retake ADS", "Can you go retake with me?", R.drawable.c));
+        userList.add(new User("USTH Student Association", "Mid-Autumn Festival ", "Do nothing", R.drawable.a));
+        userList.add(new User("USTH Student Services", "New Member Recruitment", "Nobody wants to join", R.drawable.b));
+        userList.add(new User("Trong Duc", "Best TFT Comps", "Học hỏi đi", R.drawable.c));
+        userList.add(new User("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e));
+        userList.add(new User("Student Services", "PHÒNG CHÁY CHỮA CHÁY", "Thân gửi các em sinh viên", R.drawable.f));
+        userList.add(new User("Hoang Thi Van Anh", "OOAD Student Checklish", "Dear Students,", R.drawable.a));
+        userList.add(new User("Trinh Thi Thu Trang", "Web Applied Developments", "Find your name in the Excel file below", R.drawable.b));
+        userList.add(new User("Trong Duc", "SOS", "Bài này khó", R.drawable.c));
+        userList.add(new User("Bui Duc", "Hi", "Let's play basketball", R.drawable.e));
+        userList.add(new User("Hoang Nam", "Helloooo", "Welcome!!", R.drawable.f));
 
 
 
