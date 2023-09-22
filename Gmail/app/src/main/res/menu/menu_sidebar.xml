@@ -22,6 +22,10 @@
                     android:title="Sent"
                     android:icon="@drawable/sendgg"/>
                 <item
+                    android:id="@+id/snoozed"
+                    android:title="Snoozed"
+                    android:icon="@drawable/snoozed" />
+                <item
                     android:id="@+id/allmail"
                     android:title="All mail"
                     android:icon="@drawable/allmailgg" />
@@ -33,6 +37,7 @@
                     android:id="@+id/trash"
                     android:title="Trash"
                     android:icon="@drawable/trashgg" />
+
                 </group>
             </menu>
         </item>
