@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.SentFragment">
+    tools:context=".fragment.AllMailFragment"
+    android:background="#FFFFFF">
+
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Sent"
-        android:gravity="center"
-        android:textSize="50sp"/>
+    <ImageView
+        android:layout_width="236dp"
+        android:layout_height="492dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="80dp"
+        android:src="@drawable/nothinginsent"
+        android:textSize="50sp" />
 
-</FrameLayout>
+</RelativeLayout>
