@@ -23,19 +23,17 @@
             android:layout_height="wrap_content"
             app:elevation="0dp">
 
-            <!-- ConstraintLayout with CardView and Toolbar -->
-            <FrameLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#FFFFFF">
-
                 <!-- CardView -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:cardBackgroundColor="#e6e7f0"
-                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="4dp"
                     app:cardElevation="2dp"
                     app:cardUseCompatPadding="true">
 
@@ -55,7 +53,7 @@
                             android:layout_width="310dp"
                             android:layout_height="48dp"
                             android:fontFamily="@font/light"
-                            android:hint="@string/search_in_mail"
+                            android:hint="Search in mail"
                             android:layout_marginStart="20dp"
                             android:inputType="text"
                             android:paddingStart="15dp"
@@ -63,7 +61,7 @@
 
                     </androidx.appcompat.widget.Toolbar>
                 </androidx.cardview.widget.CardView>
-            </FrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
         <!-- RecyclerView for Inbox Items -->
@@ -79,6 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/bottomAppBar"
+            android:backgroundTint="@color/white"
             android:layout_gravity="bottom"
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="50dp">

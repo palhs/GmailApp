@@ -36,6 +36,13 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
+import vn.edu.usth.gmail.fragment.AllMailFragment;
+import vn.edu.usth.gmail.fragment.InboxFragment;
+import vn.edu.usth.gmail.fragment.SentFragment;
+import vn.edu.usth.gmail.fragment.SettingsFragment;
+import vn.edu.usth.gmail.fragment.SnoozedFragment;
+import vn.edu.usth.gmail.fragment.SpamFragment;
+import vn.edu.usth.gmail.fragment.StarFragment;
 import vn.edu.usth.gmail.fragment.TrashFragment;
 
 public class MainActivity extends AppCompatActivity implements SelectListener,KeyboardVisibilityUtils.OnKeyboardVisibilityListener{
@@ -107,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                drawerLayout.closeDrawer(GravityCompat.START);
                 if (item.getItemId() == R.id.logout) {
                     FirebaseAuth.getInstance().signOut();
                     Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
@@ -114,38 +122,44 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                     finish();
                     return true;
                 }
+                else if (item.getItemId() == R.id.inbox){
+                    recyclerView.setVisibility(View.VISIBLE);
+                    openFragment(new InboxFragment());
+                    return true;
+                }
                 else if (item.getItemId() == R.id.star){
-                    openFragment(new TrashFragment());
+                    recyclerView.setVisibility(View.GONE);
+                    openFragment(new StarFragment());
                     return true;
                 }
                 else if (item.getItemId() == R.id.settings){
-                    Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
-                    startActivity(intent);
-                    finish();
+                    recyclerView.setVisibility(View.GONE);
+                    openFragment(new SettingsFragment());
                     return true;
                 }
                 else if (item.getItemId() == R.id.sent){
-                    Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
-                    startActivity(intent);
-                    finish();
+                    recyclerView.setVisibility(View.GONE);
+                    openFragment(new SentFragment());
                     return true;
                 }
                 else if (item.getItemId() == R.id.allmail){
-                    Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
-                    startActivity(intent);
-                    finish();
+                    recyclerView.setVisibility(View.GONE);
+                    openFragment(new AllMailFragment());
                     return true;
                 }
                 else if (item.getItemId() == R.id.spam){
-                    Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
-                    startActivity(intent);
-                    finish();
+                    recyclerView.setVisibility(View.GONE);
+                    openFragment(new SpamFragment());
+                    return true;
+                }
+                else if (item.getItemId() == R.id.snoozed){
+                    recyclerView.setVisibility(View.GONE);
+                    openFragment(new SnoozedFragment());
                     return true;
                 }
                 else if (item.getItemId() == R.id.trash){
-                    Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
-                    startActivity(intent);
-                    finish();
+                    recyclerView.setVisibility(View.GONE);
+                    openFragment(new TrashFragment());
                     return true;
                 }
                 return false;

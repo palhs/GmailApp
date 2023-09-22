@@ -2,15 +2,21 @@ package vn.edu.usth.gmail;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +34,9 @@ public class LoginActivity extends AppCompatActivity {
     Button buttonLog;
     FirebaseAuth mAuth;
     TextView textView;
+    CardView initialCard;
+
+
 
 
     @Override
@@ -57,6 +66,8 @@ public class LoginActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.password);
         buttonLog = findViewById(R.id.btn_login);
         textView = findViewById(R.id.registerNow);
+        initialCard = findViewById(R.id.initialCard);
+
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override

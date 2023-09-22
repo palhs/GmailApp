@@ -23,19 +23,17 @@
             android:layout_height="wrap_content"
             app:elevation="0dp">
 
-            <!-- ConstraintLayout with CardView and Toolbar -->
-            <FrameLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#FFFFFF">
-
                 <!-- CardView -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:cardBackgroundColor="#e6e7f0"
-                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardCornerRadius="4dp"
                     app:cardElevation="2dp"
                     app:cardUseCompatPadding="true">
 
@@ -63,7 +61,7 @@
 
                     </androidx.appcompat.widget.Toolbar>
                 </androidx.cardview.widget.CardView>
-            </FrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
         <!-- RecyclerView for Inbox Items -->
@@ -78,6 +76,7 @@
         <com.google.android.material.bottomappbar.BottomAppBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
             android:id="@+id/bottomAppBar"
             android:layout_gravity="bottom"
             app:fabCradleMargin="10dp"

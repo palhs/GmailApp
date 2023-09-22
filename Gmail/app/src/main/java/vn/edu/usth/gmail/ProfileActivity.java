@@ -28,7 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
             Window window = getWindow();
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.white));
         }
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_profile);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile);
