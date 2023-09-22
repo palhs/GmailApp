@@ -29,6 +29,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:id="@+id/more_vert"
+            android:onClick="morevertPopup"
             android:background="#FEFBFE" />
 
 
@@ -62,25 +63,23 @@
             android:id="@+id/D_head_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:text="HELLOOO"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="33dp"
             android:textSize="22dp"/>
 
-        <Button
-            android:layout_marginRight="5dp"
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/type_mail"
             android:layout_below="@id/D_head_email"
-            android:layout_width="60dp"
+            android:layout_width="55dp"
             android:layout_height="15dp"
             android:layout_marginLeft="32dp"
             android:background="@drawable/inbox_button"
             android:text="Inbox"
-            android:textColor="@color/black"/>
+            android:textSize="8dp" />
 
         <ImageButton
-            android:id="@+id/star_btn"
+            android:id="@+id/star"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/D_head_email"
@@ -88,8 +87,9 @@
             android:layout_marginLeft="170dp"
             android:layout_marginTop="-12dp"
             android:layout_toEndOf="@+id/type_mail"
-            android:background="@drawable/transparen"
-            android:src="@drawable/stargg" />
+            android:src="@drawable/stargg"
+            android:background="@drawable/star_button_selector"
+            android:onClick="star"/>
 
     </RelativeLayout>
     <RelativeLayout
@@ -141,7 +141,9 @@
             android:layout_marginTop="74dp"
             android:layout_marginLeft="130dp"
             android:background="@drawable/transparen"
-            android:contentDescription="Show details"/>
+            android:contentDescription="Show details"
+            android:onClick="showPopup"
+            android:id="@+id/row_down"/>
 
 
         <ImageButton
@@ -162,7 +164,8 @@
             android:background="@drawable/transparen"
             android:layout_marginTop="50dp"
             android:contentDescription="More"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:onClick="morePopup"/>
     </RelativeLayout>
 
     <ScrollView
@@ -187,14 +190,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/reply_button"
             android:layout_width="120dp"
             android:layout_height="70dp"
             android:background="@drawable/button_reply"
             android:drawableTop="@drawable/turn_left"
             android:text="Reply"
-            android:textColor="@color/black"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button"
@@ -203,14 +205,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.711" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button"
             android:layout_width="120dp"
             android:layout_height="70dp"
             android:background="@drawable/button_reply"
             android:drawableTop="@drawable/reply_all"
             android:text="Reply All"
-            android:textColor="@color/black"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -219,14 +220,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.713" />
 
-        <Button
-            style="@style/Widget.Material3.Button"
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="120dp"
             android:layout_height="70dp"
             android:background="@drawable/button_reply"
             android:drawableTop="@drawable/turn_right"
             android:text="Forward"
-            android:textColor="@color/black"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

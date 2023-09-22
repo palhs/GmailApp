@@ -10,4 +10,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="btn_login">#FF1100</color>
     <color name="background_login">#7C7878</color>
+    <color name="unselectedstarcolor">#FF000000</color>
+    <color name="selectedstarcolor">#E9B824</color>
+
 </resources>
