@@ -5,9 +5,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -28,6 +30,7 @@ import android.view.MenuItem;
 import java.util.List;
 import android.content.Intent;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -59,20 +62,17 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
     RecyclerView recyclerView;
     List<User> userList;
     CustomAdapter customAdapter;
-
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-
     ExtendedFloatingActionButton compose_button;
-
     CoordinatorLayout coordinatorLayout;
     BottomAppBar bottomAppBar;
-
     BottomNavigationView bottomNavigationView;
     KeyboardVisibilityUtils keyboardVisibilityUtils;
-
     EditText editText;
+
+
 
     private boolean isMeetItemSelected = false;
 
@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
             Window window = getWindow();
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.white));
         }
+
         setContentView(R.layout.activity_main);
         displayItems();
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -96,11 +97,11 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         editText = findViewById(R.id.editText);
 
-
-
+        // Enable the Menu Icon to toggle the Menu Bar
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
 
         View rootView = findViewById(android.R.id.content);
         keyboardVisibilityUtils = new KeyboardVisibilityUtils(rootView, this);
@@ -120,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                 }
             }
         });
+
 
         compose_button.setOnClickListener(new View.OnClickListener() {
             @Override

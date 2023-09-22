@@ -8,19 +8,21 @@
 
 
   <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/new_meeting_btn"
       android:layout_width="170dp"
       android:layout_height="wrap_content"
-      android:text="New meeting"
+      android:text="@string/new_meeting"
       android:textColor="#FFFFFF"
-      android:background="@drawable/buttonmeet"
+      android:background="@drawable/button_meet"
       android:layout_marginLeft="20dp"
       android:layout_marginTop="20dp"/>
 
   <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/join_meeting_btn"
       android:layout_width="170dp"
       android:layout_height="wrap_content"
-      android:text="Join a Meeting"
-      android:background="@drawable/buttonmeet2"
+      android:text="@string/join_a_meeting"
+      android:background="@drawable/button_meet2"
       android:layout_marginLeft="220dp"
       android:layout_marginTop="20dp"/>
 

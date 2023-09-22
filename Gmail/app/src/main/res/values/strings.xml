@@ -26,6 +26,8 @@
     <string name="compose">Compose</string>
     <string name="new_chat">New chat</string>
     <string name="new_space">New space</string>
+    <string name="new_meeting">New meeting</string>
+    <string name="join_a_meeting">Join a Meeting</string>
 
 
 </resources>
