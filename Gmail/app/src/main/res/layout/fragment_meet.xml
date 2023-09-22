@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.AllMailFragment"
+    android:background="#FFFFFF">
+
+
+  <androidx.appcompat.widget.AppCompatButton
+      android:layout_width="170dp"
+      android:layout_height="wrap_content"
+      android:text="New meeting"
+      android:textColor="#FFFFFF"
+      android:background="@drawable/buttonmeet"
+      android:layout_marginLeft="20dp"
+      android:layout_marginTop="20dp"/>
+
+  <androidx.appcompat.widget.AppCompatButton
+      android:layout_width="170dp"
+      android:layout_height="wrap_content"
+      android:text="Join a Meeting"
+      android:background="@drawable/buttonmeet2"
+      android:layout_marginLeft="220dp"
+      android:layout_marginTop="20dp"/>
+
+
+    <TextView
+        android:id="@+id/chattext1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MEETINGS"
+        android:layout_marginTop="90dp"
+        android:layout_marginLeft="20dp"/>
+
+</RelativeLayout>
