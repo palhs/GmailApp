@@ -247,8 +247,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         userList.add(new User("Hoang Nam", "Helloooo", "Welcome!!", R.drawable.f));
 
 
-
-
         customAdapter = new CustomAdapter(this, userList, this);
         recyclerView.setAdapter(customAdapter);
 
@@ -263,6 +261,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         intent.putExtra("Image", userList.get(position).getImage());
         startActivity(intent);
     }
+
+
 
     private void openFragment(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

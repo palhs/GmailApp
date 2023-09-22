@@ -38,6 +38,7 @@
            />
         <activity
             android:name=".Detail_1"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
