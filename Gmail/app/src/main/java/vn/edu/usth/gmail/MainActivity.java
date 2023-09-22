@@ -13,7 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -37,10 +40,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 
 import vn.edu.usth.gmail.fragment.AllMailFragment;
+import vn.edu.usth.gmail.fragment.ChatFragment;
 import vn.edu.usth.gmail.fragment.InboxFragment;
+import vn.edu.usth.gmail.fragment.MeetFragment;
 import vn.edu.usth.gmail.fragment.SentFragment;
 import vn.edu.usth.gmail.fragment.SettingsFragment;
 import vn.edu.usth.gmail.fragment.SnoozedFragment;
+import vn.edu.usth.gmail.fragment.SpacesFragment;
 import vn.edu.usth.gmail.fragment.SpamFragment;
 import vn.edu.usth.gmail.fragment.StarFragment;
 import vn.edu.usth.gmail.fragment.TrashFragment;
@@ -84,6 +90,9 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         extendedFloatingActionButton = findViewById(R.id.Compose);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
+
+        navigationView.setItemIconTintList(null);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -91,12 +100,17 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         View rootView = findViewById(android.R.id.content);
         keyboardVisibilityUtils = new KeyboardVisibilityUtils(rootView, this);
 
+
+        // Set a click listener for the navigation button in the toolbar
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Check if the navigation drawer on the start (left) side is open
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    // If it's open, close it
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else {
+                    // If it's not open, open it
                     drawerLayout.openDrawer(GravityCompat.START);
                 }
             }
@@ -111,6 +125,9 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
             }
         });
 
+
+
+        // Side-bar navigation
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -166,20 +183,27 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
             }
         });
 
+
+        // Bottom bar navigation
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
 
                 if (itemId == R.id.home) {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    finish();
+                    recyclerView.setVisibility(View.VISIBLE);
                     return true;
                 } else if (itemId == R.id.chat) {
-
+                    recyclerView.setVisibility(View.GONE);
+                    openFragment(new ChatFragment());
                     return true;
-                } else if (itemId == R.id.profile) {
-
+                } else if (itemId == R.id.space) {
+                    recyclerView.setVisibility(View.GONE);
+                    openFragment(new SpacesFragment());
+                    return true;
+                } else if (itemId == R.id.meet) {
+                    recyclerView.setVisibility(View.GONE);
+                    openFragment(new MeetFragment());
                     return true;
                 }
 
@@ -190,9 +214,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
     }
 
 
-    // Inside your MainActivity.java
-
-//
 
 
     @Override
