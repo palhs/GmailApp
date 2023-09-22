@@ -2,11 +2,14 @@ package vn.edu.usth.gmail;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -24,7 +27,6 @@ public class RegisterActivity extends AppCompatActivity {
     TextInputEditText editTextEmail,editTextPassword;
     Button buttonReg;
     FirebaseAuth mAuth;
-    ProgressBar progressBar;
     TextView textView;
 
 
@@ -43,12 +45,17 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Change status bar background to the corresponding
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_login));
+        }
         setContentView(R.layout.activity_register);
         mAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonReg = findViewById(R.id.btn_register);
-        progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.loginNow);
 
 
@@ -64,7 +71,6 @@ public class RegisterActivity extends AppCompatActivity {
         buttonReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressBar.setVisibility(View.VISIBLE);
                 String email,password;
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
@@ -84,7 +90,6 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    progressBar.setVisibility(View.GONE);
                                     Toast.makeText(RegisterActivity.this, "Successful.",
                                             Toast.LENGTH_SHORT).show();
 

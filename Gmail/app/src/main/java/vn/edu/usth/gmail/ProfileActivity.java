@@ -2,10 +2,13 @@ package vn.edu.usth.gmail;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.Window;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -19,6 +22,12 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Change status bar background to the corresponding
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.white));
+        }
         setContentView(R.layout.activity_settings);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -37,7 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), ChatActivity.class));
                     finish();
                     return true;
-                } else if (itemId == R.id.settings) {
+                } else if (itemId == R.id.profile) {
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     finish();
                     return true;

@@ -8,5 +8,6 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="btn_login">#CC4238</color>
+    <color name="btn_login">#FF1100</color>
+    <color name="background_login">#7C7878</color>
 </resources>
