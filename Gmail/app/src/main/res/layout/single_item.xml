@@ -27,6 +27,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/robotomedium"
             android:textStyle="bold"
+            android:alpha="0.8"
             android:textSize="20dp"
             android:layout_marginTop="5dp"
             android:text="Name" />
