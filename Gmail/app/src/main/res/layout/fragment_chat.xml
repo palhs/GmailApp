@@ -13,13 +13,15 @@
        android:layout_height="wrap_content"
        android:text="CHAT"
        android:layout_marginTop="10dp"
-       android:layout_marginLeft="20dp"/>
+
+       android:layout_marginLeft="15dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Find someone to chat with by tapping the new chat button."
         android:layout_below="@+id/chattext1"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"/>
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:padding="18dp"/>
 
 </RelativeLayout>

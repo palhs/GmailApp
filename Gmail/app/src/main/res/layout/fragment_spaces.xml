@@ -13,13 +13,15 @@
         android:layout_height="wrap_content"
         android:text="SPACES"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"/>
+
+        android:layout_marginLeft="15dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Spaces are where team magic happens. Find or create spaces using the new space button"
+        android:text="Spaces are where team magic happens. Find or create spaces using the new space button."
         android:layout_below="@+id/chattext1"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="20dp"/>
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:padding="18dp"/>
 
 </RelativeLayout>
