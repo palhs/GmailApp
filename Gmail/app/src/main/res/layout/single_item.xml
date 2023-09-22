@@ -34,13 +34,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/light"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="5dp"
-            android:textStyle="bold"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:layout_marginRight="3dp"
-            android:text="Sep 19" />
+            android:fontFamily="@font/light"
+            android:text="Sep 19"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/head_email"
@@ -73,7 +73,7 @@
             android:layout_below="@+id/head_email"
             android:fontFamily="@font/light"
             android:layout_marginStart="390dp"
-            android:layout_marginTop="-1dp"
+            android:layout_marginTop="-3dp"
             android:src="@drawable/ic_star1" />
 
 
