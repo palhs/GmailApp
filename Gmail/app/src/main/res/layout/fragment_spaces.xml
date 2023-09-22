@@ -11,15 +11,16 @@
         android:id="@+id/chattext1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SPACES"
+        android:text="@string/spaces"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
         android:alpha="0.7"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Spaces are where team magic happens. Find or create spaces using the new space button."
+        android:text="@string/spaces_are_where_team_magic_happens_find_or_create_spaces_using_the_new_space_button"
         android:layout_below="@+id/chattext1"
+        android:fontFamily="@font/light"
         android:textSize="20dp"
         android:layout_gravity="center"
         android:padding="18dp"
