@@ -176,12 +176,10 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                     finish();
                     return true;
                 } else if (itemId == R.id.chat) {
-                    startActivity(new Intent(getApplicationContext(), ChatActivity.class));
-                    finish();
+
                     return true;
                 } else if (itemId == R.id.profile) {
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                    finish();
+
                     return true;
                 }
 
