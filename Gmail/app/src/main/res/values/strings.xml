@@ -22,6 +22,10 @@
     <string name="chat">Chat</string>
     <string name="space">Space</string>
     <string name="meet">Meet</string>
+    <string name="search_in_chat_and_spaces">Search in chat and spaces</string>
+    <string name="compose">Compose</string>
+    <string name="new_chat">New chat</string>
+    <string name="new_space">New space</string>
 
 
 </resources>

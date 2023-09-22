@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -26,6 +27,8 @@ import androidx.core.view.GravityCompat;
 import android.view.MenuItem;
 import java.util.List;
 import android.content.Intent;
+import android.widget.EditText;
+
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -61,14 +64,17 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
     NavigationView navigationView;
     Toolbar toolbar;
 
-    Button compose_button;
+    ExtendedFloatingActionButton compose_button;
 
     CoordinatorLayout coordinatorLayout;
     BottomAppBar bottomAppBar;
 
     BottomNavigationView bottomNavigationView;
-    ExtendedFloatingActionButton extendedFloatingActionButton;
     KeyboardVisibilityUtils keyboardVisibilityUtils;
+
+    EditText editText;
+
+    private boolean isMeetItemSelected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,11 +93,10 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         compose_button = findViewById(R.id.Compose);
         coordinatorLayout = findViewById(R.id.coordinator_layout);
         bottomAppBar = findViewById(R.id.bottomAppBar);
-        extendedFloatingActionButton = findViewById(R.id.Compose);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        editText = findViewById(R.id.editText);
 
 
-        navigationView.setItemIconTintList(null);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -160,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                     return true;
                 }
                 else if (item.getItemId() == R.id.allmail){
-                    recyclerView.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
                     openFragment(new AllMailFragment());
                     return true;
                 }
@@ -184,25 +189,49 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         });
 
 
+
         // Bottom bar navigation
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
 
                 if (itemId == R.id.home) {
+                    isMeetItemSelected = false;
                     recyclerView.setVisibility(View.VISIBLE);
+                    editText.setVisibility(View.VISIBLE);
+                    editText.setText(R.string.search_in_mail);
+                    compose_button.setText(R.string.compose);
+                    compose_button.setIconResource(R.drawable.ic_pencil);
+                    compose_button.setVisibility(View.VISIBLE);
+                    openFragment(new InboxFragment());
                     return true;
                 } else if (itemId == R.id.chat) {
+                    isMeetItemSelected = false;
                     recyclerView.setVisibility(View.GONE);
+                    editText.setVisibility(View.VISIBLE);
+                    editText.setText(R.string.search_in_chat_and_spaces);
+                    compose_button.setText(R.string.new_chat);
+                    compose_button.setIconResource(R.drawable.chat_icon_compose);
+                    compose_button.setVisibility(View.VISIBLE);
                     openFragment(new ChatFragment());
                     return true;
                 } else if (itemId == R.id.space) {
+                    isMeetItemSelected = false;
                     recyclerView.setVisibility(View.GONE);
+                    editText.setVisibility(View.VISIBLE);
+                    editText.setText(R.string.search_in_chat_and_spaces);
+                    compose_button.setText(R.string.new_space);
+                    compose_button.setIconResource(R.drawable.plus_compose);
+                    compose_button.setVisibility(View.VISIBLE);
                     openFragment(new SpacesFragment());
                     return true;
                 } else if (itemId == R.id.meet) {
+                    isMeetItemSelected = true;
                     recyclerView.setVisibility(View.GONE);
+                    editText.setVisibility(View.GONE);
+                    compose_button.setVisibility(View.GONE);
                     openFragment(new MeetFragment());
                     return true;
                 }
@@ -221,13 +250,18 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         if (isVisible) {
             // Keyboard is open, hide the BottomAppBar and FAB
             bottomAppBar.setVisibility(View.GONE);
-            extendedFloatingActionButton.setVisibility(View.GONE);
+            compose_button.setVisibility(View.GONE);
         } else {
             // Keyboard is closed, show the BottomAppBar and FAB
             bottomAppBar.setVisibility(View.VISIBLE);
-            extendedFloatingActionButton.setVisibility(View.VISIBLE);
+            if (isMeetItemSelected == true){
+                compose_button.setVisibility(View.GONE);
         }
-    }
+            else{
+                compose_button.setVisibility(View.VISIBLE);
+            }
+
+    }}
     @Override
     public void onBackPressed() {
         if(drawerLayout.isDrawerOpen((GravityCompat.START))){

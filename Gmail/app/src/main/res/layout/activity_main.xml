@@ -57,7 +57,9 @@
                             android:layout_marginStart="20dp"
                             android:inputType="text"
                             android:paddingStart="15dp"
-                            android:textColor="#5f6369" />
+                            android:textColor="#5f6369"
+                            android:visibility="visible"
+                            />
 
                     </androidx.appcompat.widget.Toolbar>
                 </androidx.cardview.widget.CardView>
@@ -110,7 +112,7 @@
 
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:text="Compose"
+            android:text="@string/compose"
             android:textAllCaps="false"
             android:textColor="#F44336"
             android:backgroundTint="#FFFFFF"
@@ -122,6 +124,7 @@
             android:layout_height="wrap_content"
             app:layout_anchor="@id/bottomAppBar"
             app:layout_anchorGravity="top|end"
+            android:visibility="visible"
             />
 
 
