@@ -77,8 +77,16 @@
 
 
 
+
+
             <!--            </FrameLayout>-->
         </com.google.android.material.appbar.AppBarLayout>
+
+        <ImageView
+            android:layout_width="329dp"
+            android:layout_height="343dp"
+            android:layout_gravity="center"
+            android:src="@drawable/nothinginsnoozed" />
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:layout_width="match_parent"
