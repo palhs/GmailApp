@@ -8,14 +8,16 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class ProfileActivity extends AppCompatActivity {
 
-
+    Button line_button;
     BottomNavigationView bottomNavigationView;
 
 
@@ -32,6 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile);
+
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -55,5 +58,6 @@ public class ProfileActivity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 }
