@@ -40,6 +40,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         holder.textHmail.setText(list.get(position).getHead_mail());
         holder.textContent.setText(list.get(position).getContent());
         holder.imageView.setImageResource(list.get(position).getImage());
+        holder.textDate.setText(list.get(position).getDate());
     }
 
     @Override
@@ -50,7 +51,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public class CustomViewHolder extends RecyclerView.ViewHolder {
         // grabbing the view from our recycler_view_row layout file
         // kinda like in the onCreate method
-        public TextView textName, textHmail, textContent;
+        public TextView textName, textHmail, textContent, textDate;
         public ImageView imageView;
         public CardView cardView;
         public CustomViewHolder(@NonNull View itemView, SelectListener listener) {
@@ -60,6 +61,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
             textContent = itemView.findViewById(R.id.content);
             imageView = itemView.findViewById(R.id.imageview);
             cardView = itemView.findViewById(R.id.main_container);
+            textDate= itemView.findViewById(R.id.date);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

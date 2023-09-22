@@ -4,14 +4,16 @@ public class User {
     String name;
     String head_mail;
     String content;
+    String date;
 
     int image;
 
-    public User(String name, String head_mail, String content, int image) {
+    public User(String name, String head_mail, String content, int image, String date) {
         this.name = name;
         this.head_mail = head_mail;
         this.content = content;
         this.image = image;
+        this.date = date;
     }
 
     public String getName() {
@@ -44,5 +46,13 @@ public class User {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
