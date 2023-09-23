@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/MyTextInputLayout_overlay_compose"
-        android:hint="To">
+        android:hint="@string/to">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_to"
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/MyTextInputLayout_overlay_compose"
-        android:hint="Subject">
+        android:hint="@string/subject">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_subject"
@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/MyTextInputLayout_overlay_compose"
-        android:hint="Message">
+        android:hint="@string/message">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_message"

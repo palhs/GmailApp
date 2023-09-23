@@ -21,48 +21,50 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:elevation="0dp">
+            app:elevation="0dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#FFFFFF">
                 <!-- CardView -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/cardView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    app:cardBackgroundColor="#FFFFFF"-->
+<!--                    app:cardCornerRadius="4dp"-->
+<!--                    app:cardElevation="2dp"-->
+<!--                    app:cardUseCompatPadding="true">-->
+
+                <!-- Toolbar -->
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:cardBackgroundColor="#FFFFFF"
-                    app:cardCornerRadius="4dp"
-                    app:cardElevation="2dp"
-                    app:cardUseCompatPadding="true">
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_scrollFlags="scroll"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:navigationIcon="@drawable/resizemenu3">
 
-                    <!-- Toolbar -->
-                    <androidx.appcompat.widget.Toolbar
-                        android:id="@+id/toolbar"
-                        android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:navigationIcon="@drawable/resizemenu3">
+                    <!-- EditText -->
+                    <EditText
+                        android:id="@+id/editText"
+                        android:layout_width="310dp"
+                        android:layout_height="48dp"
+                        android:fontFamily="@font/light"
+                        android:hint="@string/search_in_mail"
+                        android:layout_marginStart="20dp"
+                        android:inputType="text"
+                        android:paddingStart="15dp"
+                        android:textColor="#5f6369"
+                        android:visibility="visible"
+                        />
 
-                        <!-- EditText -->
-                        <EditText
-                            android:id="@+id/editText"
-                            android:layout_width="310dp"
-                            android:layout_height="48dp"
-                            android:fontFamily="@font/light"
-                            android:hint="Search in mail"
-                            android:layout_marginStart="20dp"
-                            android:inputType="text"
-                            android:paddingStart="15dp"
-                            android:textColor="#5f6369"
-                            android:visibility="visible"
-                            />
-
-                    </androidx.appcompat.widget.Toolbar>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.appbar.MaterialToolbar>
+                <!--                </androidx.cardview.widget.CardView>-->
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -73,10 +75,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="INBOX"
+                android:text="@string/inbox"
                 android:background="@color/white"
                 android:layout_marginLeft="15dp"
                 android:alpha="0.7"
@@ -88,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="visible"
-                android:layout_marginTop="25dp"/>
+                android:layout_marginTop="18dp"/>
 
 
         </FrameLayout>
@@ -109,7 +112,8 @@
                 android:id="@+id/bottom_navigation"
                 app:labelVisibilityMode="unlabeled"
                 app:menu="@menu/bottom_navigation_menu"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                />
         </com.google.android.material.bottomappbar.BottomAppBar>
 
 
@@ -126,8 +130,9 @@
             android:layout_height="wrap_content"
             app:layout_anchor="@id/bottomAppBar"
             app:layout_anchorGravity="top|end"
-            android:visibility="visible"
-            />
+            android:visibility="visible"/>
+        <!--            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"-->
+
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -142,3 +147,4 @@
         app:itemBackground="@drawable/nav_item_background"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
+

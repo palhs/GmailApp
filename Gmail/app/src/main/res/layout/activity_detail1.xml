@@ -41,7 +41,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_toStartOf="@+id/more_vert"
             android:background="#FEFBFE"
-            android:src="@drawable/email" />
+            android:src="@drawable/mail" />
 
         <ImageButton
             android:id="@+id/delete"
@@ -130,7 +130,7 @@
             android:layout_height="20dp"
             android:layout_marginLeft="85dp"
             android:layout_marginTop="75dp"
-            android:text="đến tôi" />
+            android:text="@string/to_me" />
 
 
 
@@ -196,7 +196,7 @@
             android:layout_height="70dp"
             android:background="@drawable/button_reply"
             android:drawableTop="@drawable/turn_left"
-            android:text="Reply"
+            android:text="@string/reply"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button"
@@ -211,7 +211,7 @@
             android:layout_height="70dp"
             android:background="@drawable/button_reply"
             android:drawableTop="@drawable/reply_all"
-            android:text="Reply All"
+            android:text="@string/reply_all"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -225,7 +225,7 @@
             android:layout_height="70dp"
             android:background="@drawable/button_reply"
             android:drawableTop="@drawable/turn_right"
-            android:text="Forward"
+            android:text="@string/forward"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

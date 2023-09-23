@@ -11,14 +11,14 @@
        android:id="@+id/chattext1"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:text="CHAT"
+       android:text="@string/chat_1"
        android:layout_marginTop="10dp"
        android:layout_marginLeft="15dp"
        android:alpha="0.7"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find someone to chat with by tapping the new chat button."
+        android:text="@string/find_someone_to_chat_with_by_tapping_the_new_chat_button"
         android:layout_below="@+id/chattext1"
         android:textSize="20dp"
         android:layout_gravity="center"

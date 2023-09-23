@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
@@ -30,6 +31,7 @@ import android.view.MenuItem;
 import java.util.List;
 import android.content.Intent;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
     KeyboardVisibilityUtils keyboardVisibilityUtils;
     EditText editText;
 
+    private Fragment currentFragment;
+
 
 
     private boolean isMeetItemSelected = false;
@@ -96,6 +100,9 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         bottomAppBar = findViewById(R.id.bottomAppBar);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         editText = findViewById(R.id.editText);
+
+
+        TextView textView_meetings = new TextView(this);
 
         // Enable the Menu Icon to toggle the Menu Bar
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -198,47 +205,78 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
+                textView_meetings.setText(R.string.meet);
+                textView_meetings.setTextColor(getResources().getColor(R.color.black_with_alpha_70));
+                textView_meetings.setTextSize(20);
+
+                boolean isMeetFragment = currentFragment instanceof MeetFragment;
 
                 if (itemId == R.id.home) {
                     isMeetItemSelected = false;
                     recyclerView.setVisibility(View.VISIBLE);
                     editText.setVisibility(View.VISIBLE);
-                    editText.setText(R.string.search_in_mail);
+                    editText.setHint(R.string.search_in_mail);
                     compose_button.setText(R.string.compose);
                     compose_button.setIconResource(R.drawable.ic_pencil);
                     compose_button.setVisibility(View.VISIBLE);
+                    toolbar.removeView(textView_meetings);
                     openFragment(new InboxFragment());
                     return true;
                 } else if (itemId == R.id.chat) {
                     isMeetItemSelected = false;
                     recyclerView.setVisibility(View.GONE);
                     editText.setVisibility(View.VISIBLE);
-                    editText.setText(R.string.search_in_chat_and_spaces);
+                    editText.setHint(R.string.search_in_chat_and_spaces);
                     compose_button.setText(R.string.new_chat);
                     compose_button.setIconResource(R.drawable.chat_icon_compose);
                     compose_button.setVisibility(View.VISIBLE);
+                    toolbar.removeView(textView_meetings);
                     openFragment(new ChatFragment());
                     return true;
                 } else if (itemId == R.id.space) {
                     isMeetItemSelected = false;
                     recyclerView.setVisibility(View.GONE);
                     editText.setVisibility(View.VISIBLE);
-                    editText.setText(R.string.search_in_chat_and_spaces);
+                    editText.setHint(R.string.search_in_chat_and_spaces);
                     compose_button.setText(R.string.new_space);
                     compose_button.setIconResource(R.drawable.plus_compose);
                     compose_button.setVisibility(View.VISIBLE);
+                    toolbar.removeView(textView_meetings);
                     openFragment(new SpacesFragment());
                     return true;
                 } else if (itemId == R.id.meet) {
-                    isMeetItemSelected = true;
-                    recyclerView.setVisibility(View.GONE);
-                    editText.setVisibility(View.GONE);
-                    compose_button.setVisibility(View.GONE);
-                    openFragment(new MeetFragment());
+                        currentFragment = new MeetFragment();
+                        isMeetItemSelected = true;
+                        recyclerView.setVisibility(View.GONE);
+                        editText.setVisibility(View.GONE);
+                        compose_button.setVisibility(View.GONE);
+                        toolbar.addView(textView_meetings, new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+                        openFragment(new MeetFragment());
                     return true;
                 }
 
                 return false;
+            }
+        });
+
+
+        // Add a scroll listener to the RecyclerView
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if (dy > 0 && compose_button.isExtended()) {
+                    // Scrolling down, and FAB is extended, so shrink it
+                    compose_button.shrink();
+                    bottomAppBar.setVisibility(View.GONE);
+
+                } else if (dy < 0 && !compose_button.isExtended()) {
+                    // Scrolling up, and FAB is not extended, so extend it
+                    compose_button.extend();
+                    bottomAppBar.setVisibility(View.VISIBLE);
+
+                }
             }
         });
 
@@ -264,6 +302,9 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
             }
 
     }}
+
+
+
     @Override
     public void onBackPressed() {
         if(drawerLayout.isDrawerOpen((GravityCompat.START))){
@@ -339,36 +380,6 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         transaction.commit();
     }
 
-
-    @Override
-        public void onStart() {
-            super.onStart();
-            Log.i("MainActivity", "OnStart");
-        }
-
-        @Override
-        public void onPause() {
-            super.onPause();
-            Log.i("MainActivity", "OnPause");
-        }
-
-        @Override
-        public void onResume() {
-            super.onResume();
-            Log.i("MainActivity", "OnResume");
-        }
-
-        @Override
-        public void onStop() {
-            super.onStop();
-            Log.i("MainActivity", "OnStop");
-        }
-
-        @Override
-        public void onDestroy() {
-            super.onDestroy();
-            Log.i("MainActivity", "OnDestroy");
-        }
 
 
 
