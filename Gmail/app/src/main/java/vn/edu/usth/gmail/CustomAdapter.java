@@ -16,9 +16,9 @@ import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
     Context context;
-    List<User> list;
+    List<Email> list;
     private final SelectListener listener;
-    public CustomAdapter(Context context, List<User> list, SelectListener listener) {
+    public CustomAdapter(Context context, List<Email> list, SelectListener listener) {
         this.context = context;
         this.list = list;
         this.listener = listener;
@@ -48,7 +48,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public int getItemCount() {
         return list.size();
     }
-    public void filterList(List<User> filteredList){
+    public void filterList(List<Email> filteredList){
         list = filteredList;
         notifyDataSetChanged();
 

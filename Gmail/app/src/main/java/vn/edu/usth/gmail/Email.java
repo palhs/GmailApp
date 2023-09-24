@@ -1,6 +1,6 @@
 package vn.edu.usth.gmail;
 
-public class User {
+public class Email {
     String name;
     String head_mail;
     String content;
@@ -8,7 +8,7 @@ public class User {
 
     int image;
 
-    public User(String name, String head_mail, String content, int image, String date) {
+    public Email(String name, String head_mail, String content, int image, String date) {
         this.name = name;
         this.head_mail = head_mail;
         this.content = content;

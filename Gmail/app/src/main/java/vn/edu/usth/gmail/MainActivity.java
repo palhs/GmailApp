@@ -5,26 +5,21 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SearchView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 
 import androidx.core.view.GravityCompat;
 
@@ -33,7 +28,6 @@ import java.util.List;
 import android.content.Intent;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -44,6 +38,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -63,7 +58,8 @@ import vn.edu.usth.gmail.fragment.TrashFragment;
 public class MainActivity extends AppCompatActivity implements SelectListener,KeyboardVisibilityUtils.OnKeyboardVisibilityListener{
 
     RecyclerView recyclerView;
-    List<User> userList;
+    List<String> emaiList;
+    List<Email> emailList;
     CustomAdapter customAdapter;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -301,8 +297,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
     }
 //  Search bar
     private void filter(String newText) {
-        List<User> filteredList = new ArrayList<>();
-        for (User item : userList){
+        List<Email> filteredList = new ArrayList<>();
+        for (Email item : emailList){
             if (item.getName().toLowerCase().startsWith(newText.toLowerCase())){
                 filteredList.add(item);
             }
@@ -338,66 +334,127 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         }else{
         super.onBackPressed();
     }}
-
+    //Display items recyclerview
     private void displayItems() {
         recyclerView = findViewById(R.id.recycler_main);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-        userList = new ArrayList<>();
+        emailList = new ArrayList<>();
 
-        userList.add(new User("USTH Student Services", "Đăng kí gian hàng hội chợ", "Thân gửi em, để chào mừng tân sinh viên", R.drawable.a, "Sep 22"));
-        userList.add(new User("GED Dept", "CHECK ATTENDANCE LIST", "Find your name in the Excel file below", R.drawable.f,"Sep 22"));
-        userList.add(new User("Phan Anh", "INTERNSHIP", "Urgent", R.drawable.a,"Sep 21"));
-        userList.add(new User("Hoang Thi Van Anh", "Machine Learning Checklist Attendance", "Dear all, the ICT Department",R.drawable.a,"Sep 21"));
-        userList.add(new User("Bui Duc", "GPA", "How about you?", R.drawable.e,"Sep 20"));
-        userList.add(new User("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e,"Sep 20"));
-        userList.add(new User("Trinh Thi Thu Trang", "Đăng kí môn lựa chọn", "Dear students", R.drawable.f,"Sep 19"));
-        userList.add(new User("Trong Duc", "Retake ADS", "Can you go retake with me?", R.drawable.c,"Sep 19"));
-        userList.add(new User("USTH Student Association", "Mid-Autumn Festival ", "Do nothing", R.drawable.a,"Sep 18"));
-        userList.add(new User("USTH Student Services", "New Member Recruitment", "Nobody wants to join", R.drawable.b,"Sep 17"));
-        userList.add(new User("Trong Duc", "Best TFT Comps", "Học hỏi đi", R.drawable.c,"Sep 15"));
-        userList.add(new User("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e,"Sep 13"));
-        userList.add(new User("Student Services", "PHÒNG CHÁY CHỮA CHÁY", "Thân gửi các em sinh viên", R.drawable.f,"Sep 12"));
-        userList.add(new User("Hoang Thi Van Anh", "OOAD Student Checklish", "Dear Students,", R.drawable.a, "Sep 11"));
-        userList.add(new User("Trinh Thi Thu Trang", "Web Applied Developments", "Find your name in the Excel file below", R.drawable.b, "Sep 10"));
-        userList.add(new User("Trong Duc", "SOS", "Bài này khó", R.drawable.c,"Sep 9"));
-        userList.add(new User("Bui Duc", "Hi", "Let's play basketball", R.drawable.e,"Sep 8"));
-        userList.add(new User("Hoang Nam", "Helloooo", "Welcome!!", R.drawable.f,"Sep 8"));
-        userList.add(new User("USTH Student Services", "Đăng kí gian hàng hội chợ", "Thân gửi em, để chào mừng tân sinh viên ", R.drawable.a,"Sep 7"));
-        userList.add(new User("GED Dept", "CHECK ATTENDANCE LIST", "Find your name in the Excel file below", R.drawable.f,"Sep 7"));
-        userList.add(new User("Phan Anh", "INTERNSHIP", "Urgent", R.drawable.a,"Sep 6"));
-        userList.add(new User("Hoang Thi Van Anh", "Machine Learning Checklist Attendance", "Dear all, the ICT Department",R.drawable.a,"Sep 5"));
-        userList.add(new User("Bui Duc", "GPA", "How about you?", R.drawable.e,"Sep 5"));
-        userList.add(new User("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e,"Sep 4"));
-        userList.add(new User("Trinh Thi Thu Trang", "Đăng kí môn lựa chọn", "Dear students", R.drawable.f,"Sep4"));
-        userList.add(new User("Trong Duc", "Retake ADS", "Can you go retake with me?", R.drawable.c,"Sep 3"));
-        userList.add(new User("USTH Student Association", "Mid-Autumn Festival ", "Do nothing", R.drawable.a,"Sep 2"));
-        userList.add(new User("USTH Student Services", "New Member Recruitment", "Nobody wants to join", R.drawable.b,"Sep 1"));
-        userList.add(new User("Trong Duc", "Best TFT Comps", "Học hỏi đi", R.drawable.c,"Sep 1"));
-        userList.add(new User("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e,"Aug 31"));
-        userList.add(new User("Student Services", "PHÒNG CHÁY CHỮA CHÁY", "Thân gửi các em sinh viên", R.drawable.f,"Sep 31"));
-        userList.add(new User("Hoang Thi Van Anh", "OOAD Student Checklish", "Dear Students,", R.drawable.a,"Sep 30"));
-        userList.add(new User("Trinh Thi Thu Trang", "Web Applied Developments", "Find your name in the Excel file below", R.drawable.b,"Sep 29"));
-        userList.add(new User("Trong Duc", "SOS", "Bài này khó", R.drawable.c,"Sep 28"));
-        userList.add(new User("Bui Duc", "Hi", "Let's play basketball", R.drawable.e,"Sep 28"));
-        userList.add(new User("Hoang Nam", "Helloooo", "Welcome!!", R.drawable.f,"Sep 27"));
+        emailList.add(new Email("USTH Student Services", "Đăng kí gian hàng hội chợ", "Thân gửi em, để chào mừng tân sinh viên", R.drawable.a, "Sep 22"));
+        emailList.add(new Email("GED Dept", "CHECK ATTENDANCE LIST", "Find your name in the Excel file below", R.drawable.f,"Sep 22"));
+        emailList.add(new Email("Phan Anh", "INTERNSHIP", "Urgent", R.drawable.a,"Sep 21"));
+        emailList.add(new Email("Hoang Thi Van Anh", "Machine Learning Checklist Attendance", "Dear all, the ICT Department",R.drawable.a,"Sep 21"));
+        emailList.add(new Email("Bui Duc", "GPA", "How about you?", R.drawable.e,"Sep 20"));
+        emailList.add(new Email("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e,"Sep 20"));
+        emailList.add(new Email("Trinh Thi Thu Trang", "Đăng kí môn lựa chọn", "Dear students", R.drawable.f,"Sep 19"));
+        emailList.add(new Email("Trong Duc", "Retake ADS", "Can you go retake with me?", R.drawable.c,"Sep 19"));
+        emailList.add(new Email("USTH Student Association", "Mid-Autumn Festival ", "Do nothing", R.drawable.a,"Sep 18"));
+        emailList.add(new Email("USTH Student Services", "New Member Recruitment", "Nobody wants to join", R.drawable.b,"Sep 17"));
+        emailList.add(new Email("Trong Duc", "Best TFT Comps", "Học hỏi đi", R.drawable.c,"Sep 15"));
+        emailList.add(new Email("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e,"Sep 13"));
+        emailList.add(new Email("Student Services", "PHÒNG CHÁY CHỮA CHÁY", "Thân gửi các em sinh viên", R.drawable.f,"Sep 12"));
+        emailList.add(new Email("Hoang Thi Van Anh", "OOAD Student Checklish", "Dear Students,", R.drawable.a, "Sep 11"));
+        emailList.add(new Email("Trinh Thi Thu Trang", "Web Applied Developments", "Find your name in the Excel file below", R.drawable.b, "Sep 10"));
+        emailList.add(new Email("Trong Duc", "SOS", "Bài này khó", R.drawable.c,"Sep 9"));
+        emailList.add(new Email("Bui Duc", "Hi", "Let's play basketball", R.drawable.e,"Sep 8"));
+        emailList.add(new Email("Hoang Nam", "Helloooo", "Welcome!!", R.drawable.f,"Sep 8"));
+        emailList.add(new Email("USTH Student Services", "Đăng kí gian hàng hội chợ", "Thân gửi em, để chào mừng tân sinh viên ", R.drawable.a,"Sep 7"));
+        emailList.add(new Email("GED Dept", "CHECK ATTENDANCE LIST", "Find your name in the Excel file below", R.drawable.f,"Sep 7"));
+        emailList.add(new Email("Phan Anh", "INTERNSHIP", "Urgent", R.drawable.a,"Sep 6"));
+        emailList.add(new Email("Hoang Thi Van Anh", "Machine Learning Checklist Attendance", "Dear all, the ICT Department",R.drawable.a,"Sep 5"));
+        emailList.add(new Email("Bui Duc", "GPA", "How about you?", R.drawable.e,"Sep 5"));
+        emailList.add(new Email("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e,"Sep 4"));
+        emailList.add(new Email("Trinh Thi Thu Trang", "Đăng kí môn lựa chọn", "Dear students", R.drawable.f,"Sep4"));
+        emailList.add(new Email("Trong Duc", "Retake ADS", "Can you go retake with me?", R.drawable.c,"Sep 3"));
+        emailList.add(new Email("USTH Student Association", "Mid-Autumn Festival ", "Do nothing", R.drawable.a,"Sep 2"));
+        emailList.add(new Email("USTH Student Services", "New Member Recruitment", "Nobody wants to join", R.drawable.b,"Sep 1"));
+        emailList.add(new Email("Trong Duc", "Best TFT Comps", "Học hỏi đi", R.drawable.c,"Sep 1"));
+        emailList.add(new Email("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e,"Aug 31"));
+        emailList.add(new Email("Student Services", "PHÒNG CHÁY CHỮA CHÁY", "Thân gửi các em sinh viên", R.drawable.f,"Sep 31"));
+        emailList.add(new Email("Hoang Thi Van Anh", "OOAD Student Checklish", "Dear Students,", R.drawable.a,"Sep 30"));
+        emailList.add(new Email("Trinh Thi Thu Trang", "Web Applied Developments", "Find your name in the Excel file below", R.drawable.b,"Sep 29"));
+        emailList.add(new Email("Trong Duc", "SOS", "Bài này khó", R.drawable.c,"Sep 28"));
+        emailList.add(new Email("Bui Duc", "Hi", "Let's play basketball", R.drawable.e,"Sep 28"));
+        emailList.add(new Email("Hoang Nam", "Helloooo", "Welcome!!", R.drawable.f,"Sep 27"));
 
 
-        customAdapter = new CustomAdapter(this, userList, this);
+        customAdapter = new CustomAdapter(this, emailList, this);
         recyclerView.setAdapter(customAdapter);
 
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
     }
+
+    //Swipe to do delete and archive
+    Email deletedMail = null;
+    List<String> archivedMail = new ArrayList<>();
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            int position = viewHolder.getAdapterPosition();
+            switch (direction) {
+                case ItemTouchHelper.LEFT:
+                    // Handle left swipe (delete)
+                    deletedMail = emailList.get(position); // Get the deleted email
+                    emailList.remove(position); // Remove it from the list
+                    customAdapter.notifyItemRemoved(position); // Notify the adapter
+
+                    // Show a Snackbar with an undo option
+                    Snackbar.make(recyclerView, "Email deleted", Snackbar.LENGTH_LONG)
+                            .setAction("Undo", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    // User clicked "Undo," so add the deleted email back to the list
+                                    if (deletedMail != null) {
+                                        emailList.add(position, deletedMail);
+                                        customAdapter.notifyItemInserted(position);
+                                    }
+                                }
+                            }).show();
+                    break;
+                case ItemTouchHelper.RIGHT:
+                    final Email email = emailList.get(position); // Corrected variable name
+                    archivedMail.add(String.valueOf(email)); // Use the correct list name
+                    emailList.remove(position);
+                    customAdapter.notifyItemRemoved(position);
+
+                    Snackbar make = Snackbar.make(recyclerView, email + ", Archived.", Snackbar.LENGTH_LONG);
+                    make.setAction("Undo", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            archivedMail.remove(archivedMail.lastIndexOf(email));
+                            emailList.add(position, email);
+                            customAdapter.notifyItemInserted(position);
+                        }
+                    });
+                    make.show();
+
+                    break;
+            }
+
+        }
+    };
 
     @Override
     public void onItemClicked(int position) {
         Intent intent = new Intent(MainActivity.this, Detail_1.class);
-        intent.putExtra("Name", userList.get(position).getName());
-        intent.putExtra("Head Mail", userList.get(position).getHead_mail());
-        intent.putExtra("Content", userList.get(position).getContent());
-        intent.putExtra("Image", userList.get(position).getImage());
+        intent.putExtra("Name", emailList.get(position).getName());
+        intent.putExtra("Head Mail", emailList.get(position).getHead_mail());
+        intent.putExtra("Content", emailList.get(position).getContent());
+        intent.putExtra("Image", emailList.get(position).getImage());
         startActivity(intent);
     }
 
+    @Override
+    public void onLongItemClick(int position) {
+
+    }
 
 
     private void openFragment(Fragment fragment){
