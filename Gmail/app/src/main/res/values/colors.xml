@@ -15,5 +15,6 @@
     <color name="selectedstarcolor">#E9B824</color>
     <color name="faded_red">#FF5733</color>
     <color name="black_with_alpha_70">#B3000000</color>
+    <color name="background_all">#FAF9FD</color>
 
 </resources>

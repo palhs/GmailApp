@@ -2,9 +2,11 @@ package vn.edu.usth.gmail;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class Detail_1 extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
@@ -21,7 +24,14 @@ public class Detail_1 extends AppCompatActivity implements PopupMenu.OnMenuItemC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Change status bar background to the corresponding
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_all));
+        }
         setContentView(R.layout.activity_detail1);
+
+
 
         String name = getIntent().getStringExtra("Name");
         String headMail = getIntent().getStringExtra("Head Mail");

@@ -3,12 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/main_container"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background_all">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/background_all"
+        >
 
         <ImageView
             android:id="@+id/imageview"

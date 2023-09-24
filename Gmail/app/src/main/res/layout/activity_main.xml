@@ -27,16 +27,16 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#FFFFFF">
+                android:background="@color/background_all">
                 <!-- CardView -->
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:id="@+id/cardView"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    app:cardBackgroundColor="#FFFFFF"-->
-<!--                    app:cardCornerRadius="4dp"-->
-<!--                    app:cardElevation="2dp"-->
-<!--                    app:cardUseCompatPadding="true">-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardBackgroundColor="@color/background_all"
+                    app:cardCornerRadius="4dp"
+                    app:cardElevation="2dp"
+                    app:cardUseCompatPadding="true">
 
                 <!-- Toolbar -->
                 <com.google.android.material.appbar.MaterialToolbar
@@ -55,15 +55,19 @@
                         android:layout_width="340dp"
                         android:layout_height="48dp"
                         android:fontFamily="@font/light"
-                        android:hint="@string/search_in_mail"
-                        android:inputType="text"
-                        android:paddingStart="15dp"
+                        app:queryHint="@string/search_in_mail"
+                        android:paddingStart="0dp"
                         android:textColor="#5f6369"
+                        android:background="@drawable/search_view_bg"
                         android:visibility="visible"
+                        app:iconifiedByDefault="false"
+                        android:iconifiedByDefault="false"
+                        app:searchIcon="@null"
+
                         />
 
-                </com.google.android.material.appbar.MaterialToolbar>
-                <!--                </androidx.cardview.widget.CardView>-->
+                    </com.google.android.material.appbar.MaterialToolbar>
+                </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -79,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/inbox"
-                android:background="@color/white"
+                android:background="@color/background_all"
                 android:layout_marginLeft="15dp"
                 android:alpha="0.7"
                 />
@@ -99,7 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/bottomAppBar"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/background_all"
             android:layout_gravity="bottom"
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="50dp"
@@ -141,7 +145,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/white"
+        android:background="@color/background_all"
         app:menu="@menu/menu_sidebar"
         app:itemBackground="@drawable/nav_item_background"/>
 

@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         //Change status bar background to the corresponding
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.white));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_all));
         }
 
         setContentView(R.layout.activity_main);
@@ -98,8 +98,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         coordinatorLayout = findViewById(R.id.coordinator_layout);
         bottomAppBar = findViewById(R.id.bottomAppBar);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-//
-//      editText = findViewById(R.id.editText);
+
         // Recycler View
         searchView = findViewById(R.id.search_view);
         displayItems();
@@ -228,8 +227,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                 if (itemId == R.id.home) {
                     isMeetItemSelected = false;
                     recyclerView.setVisibility(View.VISIBLE);
-                    editText.setVisibility(View.VISIBLE);
-                    editText.setHint(R.string.search_in_mail);
+                    searchView.setVisibility(View.VISIBLE);
+                    searchView.setQueryHint(getString(R.string.search_in_mail));
                     compose_button.setText(R.string.compose);
                     compose_button.setIconResource(R.drawable.ic_pencil);
                     compose_button.setVisibility(View.VISIBLE);
@@ -239,8 +238,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                 } else if (itemId == R.id.chat) {
                     isMeetItemSelected = false;
                     recyclerView.setVisibility(View.GONE);
-                    editText.setVisibility(View.VISIBLE);
-                    editText.setHint(R.string.search_in_chat_and_spaces);
+                    searchView.setVisibility(View.VISIBLE);
+                    searchView.setQueryHint(getString(R.string.search_in_chat_and_spaces));
                     compose_button.setText(R.string.new_chat);
                     compose_button.setIconResource(R.drawable.chat_icon_compose);
                     compose_button.setVisibility(View.VISIBLE);
@@ -250,8 +249,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                 } else if (itemId == R.id.space) {
                     isMeetItemSelected = false;
                     recyclerView.setVisibility(View.GONE);
-                    editText.setVisibility(View.VISIBLE);
-                    editText.setHint(R.string.search_in_chat_and_spaces);
+                    searchView.setVisibility(View.VISIBLE);
+                    searchView.setQueryHint(getString(R.string.search_in_chat_and_spaces));
                     compose_button.setText(R.string.new_space);
                     compose_button.setIconResource(R.drawable.plus_compose);
                     compose_button.setVisibility(View.VISIBLE);
@@ -262,7 +261,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                         currentFragment = new MeetFragment();
                         isMeetItemSelected = true;
                         recyclerView.setVisibility(View.GONE);
-                        editText.setVisibility(View.GONE);
+                        searchView.setVisibility(View.GONE);
                         compose_button.setVisibility(View.GONE);
                         toolbar.addView(textView_meetings, new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
                         openFragment(new MeetFragment());

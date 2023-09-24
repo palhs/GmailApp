@@ -30,7 +30,7 @@ public class ComposeActivity extends AppCompatActivity {
         //Change status bar background to the corresponding
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.white));
+            window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_all));
         }
         setContentView(R.layout.activity_compose);
 
