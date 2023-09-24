@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.SearchView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -73,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
     BottomNavigationView bottomNavigationView;
     KeyboardVisibilityUtils keyboardVisibilityUtils;
     EditText editText;
+    SearchView searchView;
+
 
     private Fragment currentFragment;
 
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         }
 
         setContentView(R.layout.activity_main);
-        displayItems();
+
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
@@ -99,9 +102,24 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         coordinatorLayout = findViewById(R.id.coordinator_layout);
         bottomAppBar = findViewById(R.id.bottomAppBar);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        editText = findViewById(R.id.editText);
+//
+//      editText = findViewById(R.id.editText);
+        // Recycler View
+        searchView = findViewById(R.id.search_view);
+        displayItems();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText);
+                return true;
+            }
+        });
+        //End Recyclerview
         TextView textView_meetings = new TextView(this);
 
         // Enable the Menu Icon to toggle the Menu Bar
@@ -281,8 +299,16 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         });
 
     }
-
-
+//  Search bar
+    private void filter(String newText) {
+        List<User> filteredList = new ArrayList<>();
+        for (User item : userList){
+            if (item.getName().toLowerCase().startsWith(newText.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        customAdapter.filterList(filteredList);
+    }
 
 
     @Override
