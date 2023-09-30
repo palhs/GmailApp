@@ -7,6 +7,10 @@ android {
     namespace 'vn.edu.usth.gmail'
     compileSdk 33
 
+    packagingOptions {
+        exclude "META-INF/DEPENDENCIES"
+    }
+
     defaultConfig {
         applicationId "vn.edu.usth.gmail"
         minSdk 24
@@ -30,6 +34,11 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.api-client:google-api-client-android:1.32.1'
+    implementation 'com.google.api-client:google-api-client-gson:1.32.1'
+    // implementation 'com.google.apis:google-api-services-gmail:v1-rev20220105-1.32.1'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    // implementation 'com.google.apis:google-api-services-gmail:v1-rev121-1.25.0'
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
