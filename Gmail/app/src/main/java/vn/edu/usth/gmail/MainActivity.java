@@ -1,37 +1,30 @@
 package vn.edu.usth.gmail;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
-import android.os.Build;
-import android.os.Bundle;
-
 import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.Gravity;
-import android.view.View;
-import android.view.Window;
-
-import androidx.core.view.GravityCompat;
-
-import android.view.MenuItem;
-import java.util.List;
-import android.content.Intent;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import androidx.appcompat.widget.Toolbar;
-
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -42,6 +35,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import vn.edu.usth.gmail.fragment.AllMailFragment;
 import vn.edu.usth.gmail.fragment.ChatFragment;
@@ -58,8 +52,8 @@ import vn.edu.usth.gmail.fragment.TrashFragment;
 public class MainActivity extends AppCompatActivity implements SelectListener,KeyboardVisibilityUtils.OnKeyboardVisibilityListener{
 
     RecyclerView recyclerView;
-    List<String> emaiList;
-    List<Email> emailList;
+//    List<String> emaiList;
+    public static List<Email> emailList = new ArrayList<>();
     CustomAdapter customAdapter;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -343,7 +337,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         emailList.add(new Email("USTH Student Services", "Đăng kí gian hàng hội chợ", "Thân gửi em, để chào mừng tân sinh viên", R.drawable.a, "Sep 22"));
         emailList.add(new Email("GED Dept", "CHECK ATTENDANCE LIST", "Find your name in the Excel file below", R.drawable.f,"Sep 22"));
         emailList.add(new Email("Phan Anh", "INTERNSHIP", "Urgent", R.drawable.a,"Sep 21"));
-        emailList.add(new Email("Hoang Thi Van Anh", "Machine Learning Checklist Attendance", "Dear all, the ICT Department",R.drawable.a,"Sep 21"));
+        emailList.add(new Email("Hoang Thi Van Anh", "Machine Learning Checklist Attendance", "Dear all, the ICT Department", R.drawable.a,"Sep 21"));
         emailList.add(new Email("Bui Duc", "GPA", "How about you?", R.drawable.e,"Sep 20"));
         emailList.add(new Email("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e,"Sep 20"));
         emailList.add(new Email("Trinh Thi Thu Trang", "Đăng kí môn lựa chọn", "Dear students", R.drawable.f,"Sep 19"));
@@ -361,7 +355,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         emailList.add(new Email("USTH Student Services", "Đăng kí gian hàng hội chợ", "Thân gửi em, để chào mừng tân sinh viên ", R.drawable.a,"Sep 7"));
         emailList.add(new Email("GED Dept", "CHECK ATTENDANCE LIST", "Find your name in the Excel file below", R.drawable.f,"Sep 7"));
         emailList.add(new Email("Phan Anh", "INTERNSHIP", "Urgent", R.drawable.a,"Sep 6"));
-        emailList.add(new Email("Hoang Thi Van Anh", "Machine Learning Checklist Attendance", "Dear all, the ICT Department",R.drawable.a,"Sep 5"));
+        emailList.add(new Email("Hoang Thi Van Anh", "Machine Learning Checklist Attendance", "Dear all, the ICT Department", R.drawable.a,"Sep 5"));
         emailList.add(new Email("Bui Duc", "GPA", "How about you?", R.drawable.e,"Sep 5"));
         emailList.add(new Email("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e,"Sep 4"));
         emailList.add(new Email("Trinh Thi Thu Trang", "Đăng kí môn lựa chọn", "Dear students", R.drawable.f,"Sep4"));
@@ -432,6 +426,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                             customAdapter.notifyItemInserted(position);
                         }
                     });
+
                     make.show();
 
                     break;
@@ -447,8 +442,17 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         intent.putExtra("Head Mail", emailList.get(position).getHead_mail());
         intent.putExtra("Content", emailList.get(position).getContent());
         intent.putExtra("Image", emailList.get(position).getImage());
+        intent.putExtra("position", position);
         startActivity(intent);
     }
+
+//    @Override
+//    public void onItemClicked(int position) {
+//        Intent intent = new Intent(MainActivity.this, Detail_1.class);
+//        intent.putExtra("position", position);
+//        startActivity(intent);
+//    }
+
 
     @Override
     public void onLongItemClick(int position) {
