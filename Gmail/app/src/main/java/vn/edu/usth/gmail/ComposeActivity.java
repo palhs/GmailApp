@@ -12,6 +12,8 @@ import android.content.Intent;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -35,16 +37,24 @@ public class ComposeActivity extends AppCompatActivity {
 
         binding = ActivityComposeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String sender = user.getEmail();
+            binding.txtSender.setText(sender);
+        }
 
         binding.sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Get the current user from Firebase Authentication
+
+
                 String sender = binding.txtSender.getText().toString();
                 String content = binding.txtContent.getText().toString();
                 String subject = binding.txtSubject.getText().toString();
                 String receiver = binding.txtReceiver.getText().toString();
 
-                if (!sender.isEmpty() && !content.isEmpty() && !subject.isEmpty() && !receiver.isEmpty()) {
+                if (!content.isEmpty() && !subject.isEmpty() && !receiver.isEmpty()) {
                     Email email = new Email(sender, subject, content, receiver);
 
                     db = FirebaseDatabase.getInstance();
@@ -58,7 +68,7 @@ public class ComposeActivity extends AppCompatActivity {
                             binding.txtContent.setText("");
                             binding.txtReceiver.setText("");
                             binding.txtSubject.setText("");
-                            binding.txtSender.setText("");
+                            binding.txtSender.setText(sender);
                             Toast.makeText(ComposeActivity.this, "Successfully Sent", Toast.LENGTH_SHORT).show();
                         }
                     });
