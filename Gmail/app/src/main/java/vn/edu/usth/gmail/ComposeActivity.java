@@ -7,42 +7,67 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import vn.edu.usth.gmail.databinding.ActivityComposeBinding;
 
 public class ComposeActivity extends AppCompatActivity {
+    private ActivityComposeBinding binding;
 
-    private EditText mEditTextTo;
-    private EditText mEditTextSubject;
-    private EditText mEditTextMessage;
-
-
+    private DatabaseReference reference;
+    private FirebaseDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Change status bar background to the corresponding
+        // Change status bar background color to the corresponding color
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_all));
         }
-        setContentView(R.layout.activity_compose);
 
-        ImageButton backIcon = findViewById(R.id.back_icon);
-        ImageView horizIcon = findViewById(R.id.horiz_icon);
-        ImageView sendIcon = findViewById(R.id.send_icon);
-        ImageView linkIcon = findViewById(R.id.link_icon);
-        TextView title = findViewById(R.id.toolbar_title);
+        binding = ActivityComposeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
+        binding.sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String sender = binding.txtSender.getText().toString();
+                String content = binding.txtContent.getText().toString();
+                String subject = binding.txtSubject.getText().toString();
+                String receiver = binding.txtReceiver.getText().toString();
 
+                if (!sender.isEmpty() && !content.isEmpty() && !subject.isEmpty() && !receiver.isEmpty()) {
+                    Email email = new Email(sender, subject, content, receiver);
 
-        backIcon.setOnClickListener(new View.OnClickListener() {
+                    db = FirebaseDatabase.getInstance();
+                    reference = db.getReference("Email");
+                    // Use push() to generate a unique key for each email
+                    DatabaseReference newEmailRef = reference.push();
+                    String emailKey = newEmailRef.getKey();
+                    reference.child(emailKey).setValue(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(Task<Void> task) {
+                            binding.txtContent.setText("");
+                            binding.txtReceiver.setText("");
+                            binding.txtSubject.setText("");
+                            binding.txtSender.setText("");
+                            Toast.makeText(ComposeActivity.this, "Successfully Sent", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        });
+
+        // Handle back button click
+        binding.backIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Create an Intent to navigate to the previous activity or fragment
@@ -54,36 +79,20 @@ public class ComposeActivity extends AppCompatActivity {
             }
         });
 
-        horizIcon.setOnClickListener(new View.OnClickListener() {
+        // Add click listeners for moreBtn and linkBtn as needed
+        // For example:
+        binding.moreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ComposeActivity.this, "You click on horiz icon", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ComposeActivity.this, "You clicked on the moreBtn", Toast.LENGTH_SHORT).show();
             }
         });
 
-        sendIcon.setOnClickListener(new View.OnClickListener() {
+        binding.linkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ComposeActivity.this, "You click on send icon", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ComposeActivity.this, "You clicked on the linkBtn", Toast.LENGTH_SHORT).show();
             }
         });
-
-        linkIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ComposeActivity.this, "You click on link icon", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-        mEditTextTo = findViewById(R.id.edit_text_to);
-        mEditTextSubject = findViewById(R.id.edit_text_subject);
-        mEditTextMessage = findViewById(R.id.edit_text_message);
-
-
-
     }
-
-
-
 }

@@ -37,11 +37,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public void onBindViewHolder(@NonNull CustomViewHolder holder,  int position) {
         // assigning values to the views we created in the recycler_view_row layout file
         // based on the position of the recycler view
-        holder.textName.setText(list.get(position).getName());
-        holder.textHmail.setText(list.get(position).getHead_mail());
+        holder.textName.setText(list.get(position).getSender());
+        holder.textHmail.setText(list.get(position).getSubject());
         holder.textContent.setText(list.get(position).getContent());
-        holder.imageView.setImageResource(list.get(position).getImage());
-        holder.textDate.setText(list.get(position).getDate());
+//        holder.imageView.setImageResource(list.get(position).getImage());
+//        holder.textDate.setText(list.get(position).getDate());
     }
 
     @Override

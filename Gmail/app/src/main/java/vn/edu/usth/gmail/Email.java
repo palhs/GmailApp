@@ -1,35 +1,32 @@
 package vn.edu.usth.gmail;
 
 public class Email {
-    String name;
-    String head_mail;
+    String sender;
+    String subject;
     String content;
-    String date;
+    String receiver;
 
-    int image;
-
-    public Email(String name, String head_mail, String content, int image, String date) {
-        this.name = name;
-        this.head_mail = head_mail;
+    public Email(String sender, String subject, String content, String receiver) {
+        this.sender = sender;
+        this.subject = subject;
         this.content = content;
-        this.image = image;
-        this.date = date;
+        this.receiver = receiver;
     }
 
-    public String getName() {
-        return name;
+    public String getSender() {
+        return sender;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
-    public String getHead_mail() {
-        return head_mail;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setHead_mail(String head_mail) {
-        this.head_mail = head_mail;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     public String getContent() {
@@ -40,19 +37,11 @@ public class Email {
         this.content = content;
     }
 
-    public int getImage() {
-        return image;
+    public String getReceiver() {
+        return receiver;
     }
 
-    public void setImage(int image) {
-        this.image = image;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 }

@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "921414455204",
-    "project_id": "usthmail-d989b",
-    "storage_bucket": "usthmail-d989b.appspot.com"
+    "project_number": "552701730580",
+    "firebase_url": "https://test-sendmail-400703-default-rtdb.firebaseio.com",
+    "project_id": "test-sendmail-400703",
+    "storage_bucket": "test-sendmail-400703.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:921414455204:android:fb821002d8817652393b31",
+        "mobilesdk_app_id": "1:552701730580:android:b4cf4f6b089bc22889ac01",
         "android_client_info": {
           "package_name": "vn.edu.usth.gmail"
         }
@@ -15,45 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAeeG8aVR3Sm1RtQOGMPg6ofSdyzGWh3V4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:921414455204:android:f14379492ee28163393b31",
-        "android_client_info": {
-          "package_name": "vn.edu.usth.myapplication"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAeeG8aVR3Sm1RtQOGMPg6ofSdyzGWh3V4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:921414455204:android:42b3ac0925d03056393b31",
-        "android_client_info": {
-          "package_name": "vn.edu.usth.usthmail"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAeeG8aVR3Sm1RtQOGMPg6ofSdyzGWh3V4"
+          "current_key": "AIzaSyCA8qBQUPimiNz0XNZ6xjVs9N_RAa1a7c8"
         }
       ],
       "services": {
