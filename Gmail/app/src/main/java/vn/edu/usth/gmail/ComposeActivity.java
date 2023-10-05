@@ -54,9 +54,8 @@ public class ComposeActivity extends AppCompatActivity {
                 String subject = binding.txtSubject.getText().toString();
                 String receiver = binding.txtReceiver.getText().toString();
 
-                if (!content.isEmpty() && !subject.isEmpty() && !receiver.isEmpty()) {
+                if (!sender.isEmpty() &&!content.isEmpty() && !subject.isEmpty() && !receiver.isEmpty()) {
                     Email email = new Email(sender, subject, content, receiver);
-
                     db = FirebaseDatabase.getInstance();
                     reference = db.getReference("Email");
                     // Use push() to generate a unique key for each email
@@ -68,7 +67,7 @@ public class ComposeActivity extends AppCompatActivity {
                             binding.txtContent.setText("");
                             binding.txtReceiver.setText("");
                             binding.txtSubject.setText("");
-                            binding.txtSender.setText(sender);
+                            binding.txtSender.setText("");
                             Toast.makeText(ComposeActivity.this, "Successfully Sent", Toast.LENGTH_SHORT).show();
                         }
                     });
