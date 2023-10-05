@@ -6,6 +6,9 @@ public class Email {
     String content;
     String receiver;
 
+    public Email() {
+    }
+
     public Email(String sender, String subject, String content, String receiver) {
         this.sender = sender;
         this.subject = subject;

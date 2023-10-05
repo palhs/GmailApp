@@ -32,6 +32,10 @@ import com.google.android.gms.common.Scopes;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import vn.edu.usth.gmail.databinding.ActivityMainBinding;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -64,11 +68,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
         //Change status bar background to the corresponding
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_login));
-        }
+        Window window = getWindow();
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_login));
+
+
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.email);

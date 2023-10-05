@@ -129,7 +129,7 @@
                 android:layout_height="10dp"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_register"
+                android:id="@+id/buttonReg"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:text="@string/register"

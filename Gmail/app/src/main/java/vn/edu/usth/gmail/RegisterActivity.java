@@ -21,9 +21,19 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import vn.edu.usth.gmail.databinding.ActivityComposeBinding;
+import vn.edu.usth.gmail.databinding.ActivityMainBinding;
+import vn.edu.usth.gmail.databinding.ActivityRegisterBinding;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private ActivityRegisterBinding binding;
+    private FirebaseDatabase db;
+    private DatabaseReference reference;
+    String userName;
     TextInputEditText editTextEmail,editTextPassword;
     Button buttonReg;
     FirebaseAuth mAuth;
@@ -45,17 +55,19 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //Change status bar background to the corresponding
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_login));
-        }
-        setContentView(R.layout.activity_register);
+        Window window = getWindow();
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_login));
+
+
+
         mAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
-        buttonReg = findViewById(R.id.btn_register);
+        buttonReg = findViewById(R.id.buttonReg);
         textView = findViewById(R.id.loginNow);
 
 
@@ -68,12 +80,18 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        buttonReg.setOnClickListener(new View.OnClickListener() {
+        binding.buttonReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email,password;
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
+                userName = binding.email.getText().toString();
+
+//                if(!userName.isEmpty()){
+//                    db = FirebaseDatabase.getInstance();
+//                    reference = db.getReference("Users");
+//                }
 
                 if (TextUtils.isEmpty(email)){
                     Toast.makeText(RegisterActivity.this,"Enter email", Toast.LENGTH_SHORT).show();

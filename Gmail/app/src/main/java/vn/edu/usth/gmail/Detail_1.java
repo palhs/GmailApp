@@ -33,10 +33,8 @@ public class Detail_1 extends AppCompatActivity implements PopupMenu.OnMenuItemC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Change status bar background to the corresponding
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_all));
-        }
+        Window window = getWindow();
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_all));
         setContentView(R.layout.activity_detail1);
 
         MainActivity db = new MainActivity();

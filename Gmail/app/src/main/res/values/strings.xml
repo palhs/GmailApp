@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">Gmail</string>
     <string name="open">Mở</string>
-    <string name="navigation_drawer_open">Mở thanh điều hướng</string>
-    <string name="navigation_drawer_close">Đóng thanh điều hướng</string>
-    <string name="login">Đăng nhập</string>
+    <string name="navigation_drawer_open">Open navigation bar</string>
+    <string name="navigation_drawer_close">Close navigation bar</string>
+    <string name="login">Log in</string>
     <string name="email">Email\n</string>
-    <string name="password">Mật khẩu</string>
-    <string name="register">Đăng ký</string>
-    <string name="click_to_login">Nhấp để đăng nhập</string>
-    <string name="click_to_register">Nhấp để đăng ký</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="click_to_login">Click to log in</string>
+    <string name="click_to_register">Click to register</string>
     <string name="logout">Logout</string>
     <string name="usth_mail">USTH Mail</string>
     <string name="search_in_mail">Search in mail</string>

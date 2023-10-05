@@ -26,14 +26,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="-5dp"
-            android:layout_toEndOf="@id/imageview"
-            android:textColor="@color/black"
-            android:fontFamily="@font/robotomedium"
-            android:textStyle="bold"
-            android:alpha="0.8"
-            android:textSize="20dp"
             android:layout_marginTop="5dp"
-            android:text="Name" />
+            android:layout_toEndOf="@id/imageview"
+            android:alpha="0.8"
+            android:fontFamily="@font/robotomedium"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/date"
@@ -73,6 +73,7 @@
             android:textColor="@color/black" />
 
         <ImageView
+            android:id="@+id/star_single_item"
             android:layout_width="29dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/head_email"
