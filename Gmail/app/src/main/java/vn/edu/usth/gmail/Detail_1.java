@@ -2,7 +2,6 @@ package vn.edu.usth.gmail;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +24,7 @@ public class Detail_1 extends AppCompatActivity implements PopupMenu.OnMenuItemC
     @SuppressLint("RestrictedApi")
     private boolean isStarSelected = false; // Variable to track star selection
 
-    private List<Email> emailList = new ArrayList<>();
+    private List<Email_Sender> emailSenderList = new ArrayList<>();
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -39,15 +38,15 @@ public class Detail_1 extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
         MainActivity db = new MainActivity();
 
-        emailList = loadEmailData();
+        emailSenderList = loadEmailData();
 
         int position = getIntent().getIntExtra("position", 0);
         final int[] currentIndex = {position};
 
         // Retrieve the email data based on the position
-        String name = emailList.get(position).getSender();
-        String headMail = emailList.get(position).getSubject();
-        String content = emailList.get(position).getContent();
+        String name = emailSenderList.get(position).getSender();
+        String headMail = emailSenderList.get(position).getSubject();
+        String content = emailSenderList.get(position).getContent();
 //        int image = emailList.get(position).getImage();
 
         // Update the UI elements with the email data
@@ -113,28 +112,28 @@ public class Detail_1 extends AppCompatActivity implements PopupMenu.OnMenuItemC
             if (currentIndex[0] > 0) {
                 currentIndex[0]--;
 
-                Dname.setText(emailList.get(currentIndex[0]).getSender());
-                DheadMail.setText(emailList.get(currentIndex[0]).getSubject());
-                Dcontent.setText(emailList.get(currentIndex[0]).getContent());
+                Dname.setText(emailSenderList.get(currentIndex[0]).getSender());
+                DheadMail.setText(emailSenderList.get(currentIndex[0]).getSubject());
+                Dcontent.setText(emailSenderList.get(currentIndex[0]).getContent());
 //                Dimage.setImageResource(emailList.get(currentIndex[0]).getImage());
             }
         }
             public void onSwipeLeft() {
                 // Swipe left
-                if (currentIndex[0] < emailList.size() - 1) {
+                if (currentIndex[0] < emailSenderList.size() - 1) {
                     currentIndex[0]++;
 
-                    Dname.setText(emailList.get(currentIndex[0]).getSender());
-                    DheadMail.setText(emailList.get(currentIndex[0]).getSubject());
-                    Dcontent.setText(emailList.get(currentIndex[0]).getContent());
+                    Dname.setText(emailSenderList.get(currentIndex[0]).getSender());
+                    DheadMail.setText(emailSenderList.get(currentIndex[0]).getSubject());
+                    Dcontent.setText(emailSenderList.get(currentIndex[0]).getContent());
 //                    Dimage.setImageResource(emailList.get(currentIndex[0]).getImage());
                 }
             }
         });
     }
 
-    private List<Email> loadEmailData() {
-        List<Email> emailList = new ArrayList<>();
+    private List<Email_Sender> loadEmailData() {
+        List<Email_Sender> emailSenderList = new ArrayList<>();
 
 //        // Add email data to the list
 //        emailList.add(new Email("USTH Student Services", "Đăng kí gian hàng hội chợ", "Thân gửi em, để chào mừng tân sinh viên", R.drawable.a, "Sep 22"));
@@ -174,7 +173,7 @@ public class Detail_1 extends AppCompatActivity implements PopupMenu.OnMenuItemC
 //        emailList.add(new Email("Bui Duc", "Hi", "Let's play basketball", R.drawable.e,"Sep 28"));
 //        emailList.add(new Email("Hoang Nam", "Helloooo", "Welcome!!", R.drawable.f,"Sep 27"));
 
-        return emailList;
+        return emailSenderList;
     }
 
 

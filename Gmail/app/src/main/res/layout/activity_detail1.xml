@@ -37,7 +37,7 @@
 
 
         <ImageButton
-            android:id="@+id/email"
+            android:id="@+id/emailSender"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_centerVertical="true"
@@ -51,7 +51,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/email"
+            android:layout_toStartOf="@+id/emailSender"
             android:layout_marginHorizontal="4dp"
             android:src="@drawable/delete"
             android:background="@drawable/transparen" />

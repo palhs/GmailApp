@@ -39,6 +39,8 @@ public class RegisterActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private TextInputEditText email;
     private TextInputEditText password;
+    public FirebaseUser firebaseUser;
+    String userid;
     Button buttonReg;
     FirebaseAuth mAuth;
     TextView textView;
@@ -69,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         mAuth = FirebaseAuth.getInstance();
-        email = binding.email;
+        email = binding.emailSender;
         password = binding.password;
         buttonReg = binding.buttonReg;
         textView = binding.loginNow;
@@ -109,8 +111,8 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                        String userid = firebaseUser.getUid();
+                        firebaseUser = mAuth.getCurrentUser();
+                        userid = firebaseUser.getUid();
 
                         reference = FirebaseDatabase.getInstance().getReference().child("Users").child(userid);
 

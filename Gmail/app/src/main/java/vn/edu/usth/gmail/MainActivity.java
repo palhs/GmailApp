@@ -33,6 +33,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
     RecyclerView recyclerView;
     DatabaseReference database;
 //    List<Email> List;
-    public static List<Email> emailList = new ArrayList<>();
+    public static List<Email_Sender> emailList = new ArrayList<>();
     CustomAdapter customAdapter;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -71,11 +72,11 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
     KeyboardVisibilityUtils keyboardVisibilityUtils;
     EditText editText;
     SearchView searchView;
-
     SwipeRefreshLayout swipeRefreshLayout;
-
-
     private Fragment currentFragment;
+    FirebaseAuth mAuth;
+    public FirebaseUser firebaseUser;
+    String userid_sender;
 
 
 
@@ -91,6 +92,10 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
 
         setContentView(R.layout.activity_main);
 
+
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+        userid_sender = firebaseUser.getUid();
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
@@ -98,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         coordinatorLayout = findViewById(R.id.coordinator_layout);
         bottomAppBar = findViewById(R.id.bottomAppBar);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        database = FirebaseDatabase.getInstance().getReference("Email");
+        database = FirebaseDatabase.getInstance().getReference().child("Users").child(userid_sender).child("Inbox");
 
 
 
@@ -299,8 +304,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
     }
     //  Search bar
     private void filter(String newText) {
-        List<Email> filteredList = new ArrayList<>();
-        for (Email item : emailList){
+        List<Email_Sender> filteredList = new ArrayList<>();
+        for (Email_Sender item : emailList){
             if (item.getSender().toLowerCase().startsWith(newText.toLowerCase())){
                 filteredList.add(item);
             }
@@ -336,6 +341,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         }else{
             super.onBackPressed();
         }}
+
+
     //Display items recyclerview
     private void displayItems() {
         recyclerView = findViewById(R.id.recycler_main);
@@ -353,11 +360,10 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                   Email email = dataSnapshot.getValue(Email.class);
+                   Email_Sender email = dataSnapshot.getValue(Email_Sender.class);
                    emailList.add(email);
                 }
                 customAdapter.notifyDataSetChanged();
-                return;
             }
 
             @Override
@@ -368,7 +374,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
     }
 
     //Swipe to do delete and archive
-    Email deletedMail = null;
+    Email_Sender deletedMail = null;
     List<String> archivedMail = new ArrayList<>();
     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
         @Override
@@ -400,7 +406,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                             }).show();
                     break;
                 case ItemTouchHelper.RIGHT:
-                    final Email email = emailList.get(position); // Corrected variable name
+                    final Email_Sender email = emailList.get(position); // Corrected variable name
                     archivedMail.add(String.valueOf(email)); // Use the correct list name
                     emailList.remove(position);
                     customAdapter.notifyItemRemoved(position);

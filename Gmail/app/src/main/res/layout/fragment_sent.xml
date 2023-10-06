@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.AllMailFragment"
     android:background="@color/background_all">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sent"
+        android:textAllCaps="true"
+        android:background="@color/background_all"
+        android:layout_marginLeft="15dp"
+        android:alpha="0.7"
+        />
 
-    <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:layout_width="236dp"
-        android:layout_height="492dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="80dp"
-        android:src="@drawable/nothinginsent"
-        android:textSize="50sp" />
 
-</RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_main_sent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:layout_marginTop="20dp"/>
+
+
+
+
+
+
+
+
+</FrameLayout>

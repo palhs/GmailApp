@@ -11,14 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
     Context context;
-    List<Email> list;
+    List<Email_Sender> list;
     private final SelectListener listener;
-    public CustomAdapter(Context context, List<Email> list, SelectListener listener) {
+    public CustomAdapter(Context context, List<Email_Sender> list, SelectListener listener) {
         this.context = context;
         this.list = list;
         this.listener = listener;
@@ -29,7 +28,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // This is where you inflate the layout (Giving a look to our rows)
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.single_item,parent,false);
+        View view = inflater.inflate(R.layout.item_inbox,parent,false);
         return new CustomViewHolder(view, listener);
     }
 
@@ -48,7 +47,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public int getItemCount() {
         return list.size();
     }
-    public void filterList(List<Email> filteredList){
+    public void filterList(List<Email_Sender> filteredList){
         list = filteredList;
         notifyDataSetChanged();
 

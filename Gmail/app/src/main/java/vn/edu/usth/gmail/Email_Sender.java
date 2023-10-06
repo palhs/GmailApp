@@ -1,16 +1,23 @@
 package vn.edu.usth.gmail;
 
-public class Email {
+import android.widget.ImageView;
+
+public class Email_Sender {
     String sender;
     String subject;
     String content;
     String receiver;
 
-
-    public Email() {
+    // Default constructor
+    public Email_Sender() {
+        // Default constructor required for Firebase
     }
 
-    public Email(String sender, String subject, String content, String receiver) {
+
+    ImageView profile;
+
+
+    public Email_Sender(String sender, String subject, String content,String receiver) {
         this.sender = sender;
         this.subject = subject;
         this.content = content;
@@ -43,11 +50,9 @@ public class Email {
         this.content = content;
     }
 
-    public String getReceiver() {
-        return receiver;
-    }
+    public String getReceiver() {return receiver;}
 
-    public void setReceiver(String receiver) {
-        this.receiver = receiver;
-    }
+    public void setReceiver(String receiver) {this.receiver = receiver;}
+
+
 }

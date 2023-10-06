@@ -4,7 +4,7 @@
     <string name="navigation_drawer_open">Mở ngăn điều hướng</string>
     <string name="navigation_drawer_close">Đóng ngăn điều hướng</string>
     <string name="login">Đăng nhập</string>
-    <string name="email">Email\n</string>
+    <string name="emailSender">Email\n</string>
     <string name="password">Mật khẩu</string>
     <string name="register">Đăng ký</string>
     <string name="click_to_login">Nhấp để đăng nhập</string>
