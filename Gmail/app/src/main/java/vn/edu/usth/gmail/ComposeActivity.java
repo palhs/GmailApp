@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 import android.content.Intent;
 
@@ -26,7 +29,7 @@ import vn.edu.usth.gmail.Email_Sender;
 import vn.edu.usth.gmail.MainActivity;
 import vn.edu.usth.gmail.databinding.ActivityComposeBinding;
 
-public class ComposeActivity extends AppCompatActivity {
+public class ComposeActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private ActivityComposeBinding binding;
 
     private DatabaseReference Sender_reference;
@@ -154,11 +157,31 @@ public class ComposeActivity extends AppCompatActivity {
             }
         });
 
+        ImageButton popupButton3 = findViewById(R.id.moreBtn);
+        popupButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                moreBtnPopup(view);
+            }
+        });
+
         binding.linkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ComposeActivity.this, "You clicked on the linkBtn", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void moreBtnPopup(View view){
+        PopupMenu popup = new PopupMenu(this, view);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.more_compose);
+        popup.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        return false;
     }
 }
