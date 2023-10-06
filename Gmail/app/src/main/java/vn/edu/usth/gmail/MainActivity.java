@@ -2,7 +2,6 @@ package vn.edu.usth.gmail;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -358,6 +357,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                    emailList.add(email);
                 }
                 customAdapter.notifyDataSetChanged();
+                return;
             }
 
             @Override

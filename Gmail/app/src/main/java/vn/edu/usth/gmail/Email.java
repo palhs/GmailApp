@@ -6,6 +6,7 @@ public class Email {
     String content;
     String receiver;
 
+
     public Email() {
     }
 
@@ -14,7 +15,9 @@ public class Email {
         this.subject = subject;
         this.content = content;
         this.receiver = receiver;
+
     }
+
 
     public String getSender() {
         return sender;

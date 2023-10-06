@@ -1,5 +1,7 @@
 package vn.edu.usth.gmail;
 
+
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -17,6 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import vn.edu.usth.gmail.Email;
+import vn.edu.usth.gmail.MainActivity;
 import vn.edu.usth.gmail.databinding.ActivityComposeBinding;
 
 public class ComposeActivity extends AppCompatActivity {
@@ -59,6 +63,7 @@ public class ComposeActivity extends AppCompatActivity {
                     // Use push() to generate a unique key for each email
                     DatabaseReference newEmailRef = reference.push();
                     String emailKey = newEmailRef.getKey();
+
                     reference.child(emailKey).setValue(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(Task<Void> task) {
