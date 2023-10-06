@@ -23,7 +23,7 @@
             android:layout_centerVertical="true"
             android:src="@drawable/row_back"
             android:background="#FEFBFE"
-            android:layout_marginLeft="33dp"/>
+            android:layout_marginLeft="12dp"/>
 
         <ImageButton
             android:layout_width="24dp"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:text="HELLOOO"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="33dp"
+            android:layout_marginLeft="15dp"
             android:textSize="22dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -76,7 +76,7 @@
             android:layout_below="@id/D_head_email"
             android:layout_width="55dp"
             android:layout_height="15dp"
-            android:layout_marginLeft="32dp"
+            android:layout_marginLeft="15dp"
             android:background="@drawable/inbox_button"
             android:text="Inbox"
             android:textSize="8dp" />
@@ -86,10 +86,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/D_head_email"
-            android:layout_marginStart="267dp"
-            android:layout_marginLeft="170dp"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="-12dp"
-            android:layout_toEndOf="@+id/type_mail"
             android:src="@drawable/star_white"
             android:background="@drawable/star_button_selector"
             android:onClick="star" />
@@ -103,7 +101,7 @@
             android:id="@+id/D_imageview"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginLeft="12dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="35dp"
             android:src="@drawable/account_circle" />
         <LinearLayout
@@ -156,7 +154,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/row_down"
-            android:layout_marginTop="74dp"
+            android:layout_marginTop="76dp"
             android:layout_marginLeft="130dp"
             android:background="@drawable/transparen"
             android:contentDescription="Show details"
@@ -194,7 +192,7 @@
             android:id="@+id/D_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="12dp"
             android:layout_marginTop="16dp"
             android:fadeScrollbars="false"
             android:padding="8dp"
