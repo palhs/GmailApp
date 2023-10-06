@@ -1,4 +1,4 @@
-package vn.edu.usth.gmail;
+package vn.edu.usth.gmail.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,11 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
+import vn.edu.usth.gmail.Email_Sender;
+import vn.edu.usth.gmail.R;
+import vn.edu.usth.gmail.listener.SelectListener;
+
+public class SentAdapter extends RecyclerView.Adapter<SentAdapter.CustomViewHolder> {
     Context context;
     List<Email_Sender> list;
     private final SelectListener listener;
-    public CustomAdapter(Context context, List<Email_Sender> list, SelectListener listener) {
+    public SentAdapter(Context context, List<Email_Sender> list, SelectListener listener) {
         this.context = context;
         this.list = list;
         this.listener = listener;
@@ -28,7 +32,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // This is where you inflate the layout (Giving a look to our rows)
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.item_inbox,parent,false);
+        View view = inflater.inflate(R.layout.item_sent,parent,false);
         return new CustomViewHolder(view, listener);
     }
 
@@ -36,7 +40,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public void onBindViewHolder(@NonNull CustomViewHolder holder,  int position) {
         // assigning values to the views we created in the recycler_view_row layout file
         // based on the position of the recycler view
-        holder.textName.setText(list.get(position).getSender());
+        holder.textName.setText(list.get(position).getReceiver());
         holder.textHeadmail.setText(list.get(position).getSubject());
         holder.textContent.setText(list.get(position).getContent());
 //        holder.imageView.setImageResource(list.get(position).getImage());
@@ -53,7 +57,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     }
 
-    public class CustomViewHolder extends RecyclerView.ViewHolder {
+    public static class CustomViewHolder extends RecyclerView.ViewHolder {
         // grabbing the view from our recycler_view_row layout file
         // kinda like in the onCreate method
         public TextView textName, textHeadmail, textContent, textDate;
@@ -61,12 +65,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         public CardView cardView;
         public CustomViewHolder(@NonNull View itemView, SelectListener listener) {
             super(itemView);
-            textName = itemView.findViewById(R.id.name);
-            textHeadmail = itemView.findViewById(R.id.head_email);
-            textContent = itemView.findViewById(R.id.content);
-            imageView = itemView.findViewById(R.id.imageview);
-            cardView = itemView.findViewById(R.id.main_container);
-            textDate= itemView.findViewById(R.id.date);
+            textName = itemView.findViewById(R.id.nameSent);
+            textHeadmail = itemView.findViewById(R.id.head_emailSent);
+            textContent = itemView.findViewById(R.id.contentSent);
+            imageView = itemView.findViewById(R.id.imageviewSent);
+            cardView = itemView.findViewById(R.id.main_containerSent);
+            textDate= itemView.findViewById(R.id.dateSent);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

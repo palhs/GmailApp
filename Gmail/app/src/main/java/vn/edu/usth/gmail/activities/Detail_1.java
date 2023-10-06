@@ -1,4 +1,4 @@
-package vn.edu.usth.gmail;
+package vn.edu.usth.gmail.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -16,10 +15,24 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import vn.edu.usth.gmail.Email_Sender;
+import vn.edu.usth.gmail.listener.OnSwipeTouchListener;
+import vn.edu.usth.gmail.R;
+
 public class Detail_1 extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+
+    DatabaseReference database;
+    String userid_sender;
+    FirebaseAuth mAuth;
+    FirebaseUser currentUser;
+
 
     @SuppressLint("RestrictedApi")
     private boolean isStarSelected = false; // Variable to track star selection
@@ -36,29 +49,28 @@ public class Detail_1 extends AppCompatActivity implements PopupMenu.OnMenuItemC
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.background_all));
         setContentView(R.layout.activity_detail1);
 
-        MainActivity db = new MainActivity();
 
-        emailSenderList = loadEmailData();
+        emailSenderList=loadEmailData();
 
         int position = getIntent().getIntExtra("position", 0);
         final int[] currentIndex = {position};
 
-        // Retrieve the email data based on the position
+//         Retrieve the email data based on the position
         String name = emailSenderList.get(position).getSender();
         String headMail = emailSenderList.get(position).getSubject();
         String content = emailSenderList.get(position).getContent();
-//        int image = emailList.get(position).getImage();
+        String receiver = emailSenderList.get(position).getReceiver();
 
         // Update the UI elements with the email data
         TextView Dname = findViewById(R.id.D_name);
         TextView DheadMail = findViewById(R.id.D_head_email);
         TextView Dcontent = findViewById(R.id.D_content);
-        ImageView Dimage = findViewById(R.id.D_imageview);
+        TextView Dreceiver = findViewById(R.id.toW);
 
         Dname.setText(name);
         DheadMail.setText(headMail);
         Dcontent.setText(content);
-//        Dimage.setImageResource(image);
+        Dreceiver.setText(receiver);
 
 
         //back to mainpage
@@ -126,19 +138,39 @@ public class Detail_1 extends AppCompatActivity implements PopupMenu.OnMenuItemC
                     Dname.setText(emailSenderList.get(currentIndex[0]).getSender());
                     DheadMail.setText(emailSenderList.get(currentIndex[0]).getSubject());
                     Dcontent.setText(emailSenderList.get(currentIndex[0]).getContent());
-//                    Dimage.setImageResource(emailList.get(currentIndex[0]).getImage());
                 }
             }
         });
     }
 
     private List<Email_Sender> loadEmailData() {
-        List<Email_Sender> emailSenderList = new ArrayList<>();
+
+//        mAuth = FirebaseAuth.getInstance();
+//        currentUser = mAuth.getCurrentUser();
+//        userid_sender = currentUser.getUid();
+//        database = FirebaseDatabase.getInstance().getReference().child("Users").child(userid_sender).child("Sent");
+//        database.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                emailSenderList.clear(); // Clear the list before adding new data
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                    Email_Sender email = dataSnapshot.getValue(Email_Sender.class);
+//                    emailSenderList.add(email);
+//                }
+//                // Now, emailSenderList contains the data from Firebase
+//                // You can update your UI or adapter here
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                // Handle errors
+//            }
+//        });
 
 //        // Add email data to the list
-//        emailList.add(new Email("USTH Student Services", "Đăng kí gian hàng hội chợ", "Thân gửi em, để chào mừng tân sinh viên", R.drawable.a, "Sep 22"));
-//        emailList.add(new Email("GED Dept", "CHECK ATTENDANCE LIST", "Find your name in the Excel file below", R.drawable.f,"Sep 22"));
-//        emailList.add(new Email("Phan Anh", "INTERNSHIP", "Urgent", R.drawable.a,"Sep 21"));
+        emailSenderList.add(new Email_Sender("hellobaby@gmail.com", "Hello World", "Go out tonight?",  "me"));
+        emailSenderList.add(new Email_Sender("hellobaby@gmail.com", "CHECK ATTENDANCE LIST", "Find your name in the Excel file below", "me"));
+        emailSenderList.add(new Email_Sender("hellobaby@gmail.com", "INTERNSHIP", "Urgent to find a company", "me"));
 //        emailList.add(new Email("Hoang Thi Van Anh", "Machine Learning Checklist Attendance", "Dear all, the ICT Department", R.drawable.a,"Sep 21"));
 //        emailList.add(new Email("Bui Duc", "GPA", "How about you?", R.drawable.e,"Sep 20"));
 //        emailList.add(new Email("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e,"Sep 20"));

@@ -52,6 +52,7 @@
     <string name="settings_1">Settings</string>
     <string name="log_out">Log out</string>
     <string name="from">From</string>
+    <string name="me">me</string>
 
 
 </resources>

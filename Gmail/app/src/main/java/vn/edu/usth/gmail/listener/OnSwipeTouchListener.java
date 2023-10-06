@@ -1,4 +1,4 @@
-package vn.edu.usth.gmail;
+package vn.edu.usth.gmail.listener;
 
 import android.content.Context;
 import android.view.GestureDetector;

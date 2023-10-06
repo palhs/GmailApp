@@ -15,11 +15,11 @@
 
         <ImageView
             android:id="@+id/imageviewSent"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="-7dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="0dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/account_circle" />
 
         <TextView
             android:id="@+id/toLabel"

@@ -101,11 +101,11 @@
 
         <ImageView
             android:id="@+id/D_imageview"
-            android:layout_width="83dp"
-            android:layout_height="83dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="30dp"
-            android:src="@drawable/a" />
+            android:layout_marginTop="35dp"
+            android:src="@drawable/account_circle" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -122,19 +122,34 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:id="@+id/D_time"
                 android:text="9:30"
                 android:layout_marginTop="50dp"
                 />
         </LinearLayout>
-        <TextView
-            android:id="@+id/fromW"
+
+        <RelativeLayout
             android:layout_width="60dp"
             android:layout_height="20dp"
             android:layout_marginLeft="85dp"
-            android:layout_marginTop="75dp"
-            android:text="@string/to_me" />
+            android:layout_marginTop="75dp">
 
+            <TextView
+                android:id="@+id/to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/to"/>
+
+            <TextView
+                android:id="@+id/toW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/to"
+                android:layout_marginStart="5dp"
+                android:text="@string/me"/>
+
+        </RelativeLayout>
 
 
         <ImageButton

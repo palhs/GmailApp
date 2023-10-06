@@ -1,4 +1,4 @@
-package vn.edu.usth.gmail;
+package vn.edu.usth.gmail.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -43,6 +43,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import vn.edu.usth.gmail.Email_Sender;
+import vn.edu.usth.gmail.KeyboardVisibilityUtils;
+import vn.edu.usth.gmail.R;
+import vn.edu.usth.gmail.listener.SelectListener;
+import vn.edu.usth.gmail.adapter.CustomAdapter;
 import vn.edu.usth.gmail.fragment.AllMailFragment;
 import vn.edu.usth.gmail.fragment.ChatFragment;
 import vn.edu.usth.gmail.fragment.InboxFragment;
@@ -55,7 +60,7 @@ import vn.edu.usth.gmail.fragment.SpamFragment;
 import vn.edu.usth.gmail.fragment.StarFragment;
 import vn.edu.usth.gmail.fragment.TrashFragment;
 
-public class MainActivity extends AppCompatActivity implements SelectListener,KeyboardVisibilityUtils.OnKeyboardVisibilityListener{
+public class MainActivity extends AppCompatActivity implements SelectListener, KeyboardVisibilityUtils.OnKeyboardVisibilityListener {
 
     RecyclerView recyclerView;
     DatabaseReference database;
@@ -154,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         compose_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ComposeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ComposeActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -169,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                 drawerLayout.closeDrawer(GravityCompat.START);
                 if (item.getItemId() == R.id.logout) {
                     FirebaseAuth.getInstance().signOut();
-                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                     finish();
                     return true;
@@ -271,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
                     recyclerView.setVisibility(View.GONE);
                     searchView.setVisibility(View.GONE);
                     compose_button.setVisibility(View.GONE);
-                    toolbar.addView(textView_meetings, new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+//                    toolbar.addView(textView_meetings, new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
                     openFragment(new MeetFragment());
                     return true;
                 }
@@ -434,8 +439,8 @@ public class MainActivity extends AppCompatActivity implements SelectListener,Ke
         Intent intent = new Intent(MainActivity.this, Detail_1.class);
         intent.putExtra("Name", emailList.get(position).getSender());
         intent.putExtra("Head Mail", emailList.get(position).getSubject());
+        intent.putExtra("Me", emailList.get(position).getReceiver());
         intent.putExtra("Content", emailList.get(position).getContent());
-//        intent.putExtra("Image", emailList.get(position).getImage());
         intent.putExtra("position", position);
         startActivity(intent);
     }

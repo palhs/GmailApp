@@ -1,6 +1,6 @@
 package vn.edu.usth.gmail.fragment;
 
-import static vn.edu.usth.gmail.MainActivity.emailList;
+import static vn.edu.usth.gmail.activities.MainActivity.emailList;
 
 import android.os.Bundle;
 
@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,11 +26,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import vn.edu.usth.gmail.CustomAdapter;
 import vn.edu.usth.gmail.Email_Sender;
 import vn.edu.usth.gmail.R;
-import vn.edu.usth.gmail.SelectListener;
-import vn.edu.usth.gmail.SentAdapter;
+import vn.edu.usth.gmail.listener.SelectListener;
+import vn.edu.usth.gmail.adapter.SentAdapter;
 
 
 public class SentFragment extends Fragment implements SelectListener {

@@ -1,4 +1,4 @@
-package vn.edu.usth.gmail;
+package vn.edu.usth.gmail.activities;
 
 
 
@@ -26,7 +26,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import vn.edu.usth.gmail.Email_Sender;
-import vn.edu.usth.gmail.MainActivity;
+import vn.edu.usth.gmail.R;
 import vn.edu.usth.gmail.databinding.ActivityComposeBinding;
 
 public class ComposeActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {

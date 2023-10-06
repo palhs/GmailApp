@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@color/background_all"
-    tools:context=".ComposeActivity">
+    tools:context=".activities.ComposeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
