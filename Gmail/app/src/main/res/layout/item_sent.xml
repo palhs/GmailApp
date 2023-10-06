@@ -22,12 +22,26 @@
             android:src="@drawable/ic_launcher_background" />
 
         <TextView
+            android:id="@+id/toLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/imageviewSent"
+            android:fontFamily="@font/robotomedium"
+            android:alpha="0.8"
+            android:text="To: "
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/nameSent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-5dp"
+            android:layout_marginLeft="0dp"
             android:layout_marginTop="5dp"
-            android:layout_toEndOf="@id/imageviewSent"
+            android:layout_toEndOf="@id/toLabel"
             android:alpha="0.8"
             android:fontFamily="@font/robotomedium"
             android:text="Name"

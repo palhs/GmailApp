@@ -28,7 +28,7 @@ public class SentAdapter extends RecyclerView.Adapter<SentAdapter.CustomViewHold
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // This is where you inflate the layout (Giving a look to our rows)
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.item_inbox,parent,false);
+        View view = inflater.inflate(R.layout.item_sent,parent,false);
         return new CustomViewHolder(view, listener);
     }
 

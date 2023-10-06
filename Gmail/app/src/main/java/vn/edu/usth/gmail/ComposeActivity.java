@@ -34,8 +34,13 @@ public class ComposeActivity extends AppCompatActivity {
     private FirebaseDatabase db;
     FirebaseAuth mAuth;
     public FirebaseUser firebaseUser;
-    String userid_sender;
-    String userid_receiver;
+    private String userid_sender;
+    private String userid_receiver;
+    DatabaseReference newEmailRefSender;
+    DatabaseReference newEmailRefReceiver;
+    String emailKeySender;
+    String emailKeyReceiver;
+
 
 
     @Override
@@ -100,11 +105,12 @@ public class ComposeActivity extends AppCompatActivity {
                     Sender_reference = db.getReference("Users");
                     Receiver_reference = db.getReference("Users");
                     // Use push() to generate a unique key for each email
-                    DatabaseReference newEmailRefSender = Sender_reference.push();
-                    String emailKeySender = newEmailRefSender.getKey();
 
-                    DatabaseReference newEmailRefReceiver = Sender_reference.push();
-                    String emailKeyReceiver = newEmailRefReceiver.getKey();
+                    newEmailRefSender = Sender_reference.push();
+                    emailKeySender = newEmailRefSender.getKey();
+
+                    newEmailRefReceiver = Sender_reference.push();
+                    emailKeyReceiver = newEmailRefReceiver.getKey();
 
 
 
@@ -115,9 +121,13 @@ public class ComposeActivity extends AppCompatActivity {
                             binding.txtContent.setText("");
                             binding.txtReceiver.setText("");
                             binding.txtSubject.setText("");
+                            binding.txtSender.setText("");
                             Toast.makeText(ComposeActivity.this, "Successfully Sent", Toast.LENGTH_SHORT).show();
                         }
                     });
+                }
+                else{
+                    Toast.makeText(ComposeActivity.this,"Please fill all the boxes",Toast.LENGTH_SHORT).show();
                 }
             }
         });

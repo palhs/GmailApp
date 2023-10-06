@@ -12,10 +12,6 @@ import vn.edu.usth.gmail.R;
 
 
 public class SettingsFragment extends Fragment {
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
