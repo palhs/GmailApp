@@ -109,18 +109,12 @@ public class ComposeActivity extends AppCompatActivity implements PopupMenu.OnMe
                     Receiver_reference = db.getReference("Users");
                     // Use push() to generate a unique key for each email
 
-                    newEmailRefSender = Sender_reference.push();
-                    emailKeySender = newEmailRefSender.getKey();
+                    String emailKey = Sender_reference.child(userid_sender).child("Sent").push().getKey();
 
-                    newEmailRefReceiver = Sender_reference.push();
-                    emailKeyReceiver = newEmailRefReceiver.getKey();
-
-
-
-                    Sender_reference.child(userid_sender).child("Sent").child(emailKeySender).setValue(emailSender).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    Sender_reference.child(userid_sender).child("Sent").child(emailKey).setValue(emailSender).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(Task<Void> task) {
-                            Sender_reference.child(userid_receiver).child("Inbox").child(emailKeyReceiver).setValue(emailSender);
+                            Sender_reference.child(userid_receiver).child("Inbox").child(emailKey).setValue(emailSender);
                             binding.txtContent.setText("");
                             binding.txtReceiver.setText("");
                             binding.txtSubject.setText("");

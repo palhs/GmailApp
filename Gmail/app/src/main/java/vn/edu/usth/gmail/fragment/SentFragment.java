@@ -2,6 +2,7 @@ package vn.edu.usth.gmail.fragment;
 
 import static vn.edu.usth.gmail.activities.MainActivity.emailList;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,8 @@ import java.util.List;
 
 import vn.edu.usth.gmail.Email_Sender;
 import vn.edu.usth.gmail.R;
+import vn.edu.usth.gmail.activities.Detail_1;
+import vn.edu.usth.gmail.activities.MainActivity;
 import vn.edu.usth.gmail.listener.SelectListener;
 import vn.edu.usth.gmail.adapter.SentAdapter;
 
@@ -139,6 +142,17 @@ public class SentFragment extends Fragment implements SelectListener {
         }
     };
 
+
+    @Override
+    public void onItemClicked(int position) {
+        Intent intent = new Intent(getContext(), Detail_1.class);
+        intent.putExtra("Name", emailList.get(position).getSender());
+        intent.putExtra("Head Mail", emailList.get(position).getSubject());
+        intent.putExtra("Me", emailList.get(position).getReceiver());
+        intent.putExtra("Content", emailList.get(position).getContent());
+        intent.putExtra("position", position);
+        startActivity(intent);
+    }
 
     @Override
     public void onLongItemClick(int position) {

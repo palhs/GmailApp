@@ -171,6 +171,8 @@ public class Detail_1 extends AppCompatActivity implements PopupMenu.OnMenuItemC
         emailSenderList.add(new Email_Sender("hellobaby@gmail.com", "Hello World", "Go out tonight?",  "me"));
         emailSenderList.add(new Email_Sender("hellobaby@gmail.com", "CHECK ATTENDANCE LIST", "Find your name in the Excel file below", "me"));
         emailSenderList.add(new Email_Sender("hellobaby@gmail.com", "INTERNSHIP", "Urgent to find a company", "me"));
+        emailSenderList.add(new Email_Sender("nam@gmail.com", "xin chào buoi sang", "cam on phan anh nhé hhehe", "me"));
+        emailSenderList.add(new Email_Sender("nam@gmail.com", "Mon nay kho qua", "bon em da rat co gang", "me"));
 //        emailList.add(new Email("Hoang Thi Van Anh", "Machine Learning Checklist Attendance", "Dear all, the ICT Department", R.drawable.a,"Sep 21"));
 //        emailList.add(new Email("Bui Duc", "GPA", "How about you?", R.drawable.e,"Sep 20"));
 //        emailList.add(new Email("Google", "Security Alert", "A new signing on Iphone 15", R.drawable.e,"Sep 20"));
